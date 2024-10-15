@@ -53,7 +53,7 @@ header
     align-items: center;
     height: 100%;
     color: var(--color-font);
-    background: var(--color-header);
+    background: var(--color-background);
 }
 
 header > h2
@@ -87,9 +87,34 @@ header > div > button > a
     color: var(--color-font);
 }
 
-header > div > img
+header img
 {
     cursor: pointer;
+}
+
+.user_container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    color: var(--color-logo);
+}
+
+.points
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-highlight);
+}
+
+.profile_details
+{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    color: var(--color-logo);
 }
 
 .menu_container 
@@ -207,21 +232,22 @@ main
     gap: 2%;
 }
 
-.ratings_section
+.ratings_section, .personalshopping_section
 {
     padding: 6rem 2rem;
 }
 
-.rankinglist, .expertreviews
+.rankinglist, .expertreviews, .shopperchat, .curatedlist
 {
     border-radius: 20px;
     background-color: #ffffff;
+    height: 45%;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: var(--shadow-box);
 }
 
-.rankinglist:hover, .expertreviews:hover
+.rankinglist:hover, .expertreviews:hover, .shopperchat:hover, .curatedlist:hover
 {
     box-shadow:var(--shadow)
 }
@@ -249,6 +275,16 @@ main
     color: var(--color-highlight);
 }
 
+#bubble 
+{
+    color: var(--color-highlight);
+}
+
+#token
+{
+    color: var(--color-special);
+}
+
 .rankinglist > h2
 {
     font-size: 2.2rem;
@@ -259,6 +295,18 @@ main
 {
     font-size: 2.2rem;
     color: var(--color-highlight);
+}
+
+.shopperchat > h2
+{
+    font-size: 2.2rem;
+    color: var(--color-highlight);
+}
+
+.curatedlist > h2
+{
+    font-size: 2.2rem;
+    color: var(--color-special);
 }
 
 .tag
@@ -278,12 +326,12 @@ main
     white-space: nowrap;
 }
 
-.rankinglist > .tag > p
+.rankinglist > .tag > p, .curatedlist > .tag > p
 {
     border:1px solid var(--color-special);
 }
 
-.expertreviews > .tag > p
+.expertreviews > .tag > p, .shopperchat > .tag > p
 {
     border:1px solid var(--color-highlight);
 }
@@ -308,4 +356,32 @@ main
 .expertreviews > button
 {
     background-color: var(--color-highlight)
+}
+
+.btn
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.shopperchat button, .curatedlist button
+{
+    cursor: pointer;
+    display: inline;
+    border: none; 
+    border-radius: 40px; 
+    font-size: 1rem;
+    color: var(--color-font);
+    padding: 0.5rem;
+}
+
+.shopperchat button
+{
+    background-color: var(--color-highlight)
+}
+
+.curatedlist button
+{
+    background-color: var(--color-special);
 }

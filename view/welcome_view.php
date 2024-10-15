@@ -1,3 +1,8 @@
+<?php
+    include("../settings/core.php");
+    check_login();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +19,14 @@
         <div>
             <button><a href="home.html" style="text-decoration: none;">Home</a></button>
             <button><a href="about.html" style="text-decoration: none;">About Us</a></button>
-            <img src="../images/accounts.png" alt="logo" width="30px" height="30px">
+        </div>
+        <div class="user_container">
+            <img src="../images/fillin_profile.png" alt="logo" width="50px" height="50px">
+            <div class="profile_details">
+                <p>Beryl Koram</p>
+                <p>beryl.k@gmail.com</p>
+            </div>
+            <span class="material-symbols-outlined">keyboard_arrow_down</span>
         </div>
     </header>
 
@@ -33,7 +45,7 @@
                 <li> <a href=""> <span class="material-symbols-outlined">nightlife</span> Media </a> </li>
                 <li> <a href=""> <span class="material-symbols-outlined">cardiology</span> Health </a> </li>
                 <li> <a href=""> <span class="material-symbols-outlined">local_dining</span> Food </a> </li>
-                <li id="logout"> <a href=""> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
+                <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
             </ul>
         </div>
     </div>
@@ -43,7 +55,7 @@
             <div class="rankinglist">
                 <div class="top">
                     <p> 6 September 2024 </p>
-                    <spaz id="trophy" class="material-symbols-outlined">emoji_events</span>
+                    <span id="trophy" class="material-symbols-outlined">emoji_events</span>
                 </div>
                 <h2> Weekly Ranking List </h2>
                 <div class="tag">
@@ -71,10 +83,36 @@
 
         <div class="personalshopping_section">
             <div class="shopperchat">
-                Chat with Shoppers
+                <div class="top">
+                    <p> 6 September 2024 </p>
+                    <span id="bubble" class="material-symbols-outlined">maps_ugc</span>
+                </div>
+                <h2>Chat with Shoppers</h2>
+                <div class="tag">
+                    <p>Hotels</p>
+                    <p>Restaurants</p>
+                    <p>Clothes</p>
+                </div>
+                <div class="btn"> 
+                    <button>Start Chat</button>
+                    <button>Place Order</button>
+                </div>
             </div>
             <div class="curatedlist">
-                Curated List
+                <div class="top">
+                    <p> 6 September 2024 </p>
+                    <span id="token" class="material-symbols-outlined">token</span>
+                </div>
+                <h2>Niche Curated List</h2>
+                <div class="tag">
+                    <p>Hotels</p>
+                    <p>Restaurants</p>
+                    <p>Clothes</p>
+                </div>
+                <div class="btn">
+                    <button>Start Chat</button>
+                    <button>Place Order</button>
+                </div>
             </div>
         </div>
     </main>

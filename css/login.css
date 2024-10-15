@@ -9,8 +9,6 @@
     --color-background: #F0F8FF;
     --color-background-2:#011225;
     --color-header: #14141e;
-    /* --color-gradient: linear-gradient(#25252b, var(--color-highlight), #25252b, var(--color-highlight)) */
-    /* box-shadow: 0 0 10px var(--color-highlight); */
     --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1),
                   0px 1px 3px rgba(0, 0, 0, 0.08);
     --border-radius:20px;
@@ -80,8 +78,8 @@ header > h2
 .container
 {
     position: relative;
-    width: 750px;
-    height: 400px;
+    width: 800px;
+    height: 500px;
     border: 2px solid var(--color-highlight);
     box-shadow: 0 0 25px var(--color-highlight);
     overflow: hidden;
