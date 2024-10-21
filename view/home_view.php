@@ -17,8 +17,9 @@
     <header>
         <h2>NicheNest</h2>
         <div>
-            <button><a href="home.html" style="text-decoration: none;">Home</a></button>
-            <button><a href="about.html" style="text-decoration: none;">About Us</a></button>
+            <button><a href="about_view.php" style="text-decoration: none;">About Us</a></button>
+            <button><a href="reviews.html" style="text-decoration: none;">Expert Reviews</a></button>
+            <button><a href="shopping.html" style="text-decoration: none;">Personal Shopping</a></button>
         </div>
         <div class="user_container">
             <img src="../images/fillin_profile.png" alt="logo" width="50px" height="50px">

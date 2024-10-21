@@ -2,10 +2,12 @@ const container = document.querySelector('.container');
 const LoginLink = document.querySelector('.LoginLink');
 const SignupLink = document.querySelector('.SignupLink');
 
+// show the sign up form and hide login
 SignupLink.addEventListener('click', ()=>{
     container.classList.add('active')
 })
 
+// show the login form and hide the signup
 LoginLink.addEventListener('click', ()=>{
     container.classList.remove('active')
 })

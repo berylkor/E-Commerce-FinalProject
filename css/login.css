@@ -64,7 +64,7 @@ header > div > button
     background-color: var(--color-highlight);
     width: 5rem;
     height: 2.5rem;
-    box-shadow: 0 0 10px var(--color-highlight);
+    box-shadow: var(--shadow-box);
     cursor: pointer;
 }
 
