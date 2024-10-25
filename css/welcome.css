@@ -76,7 +76,9 @@ header > div > button
     border: 2px solid var(--color-highlight);
     border-radius: 20px;
     background-color: var(--color-highlight);
-    width: 5rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    width: fit-content;
     height: 2.5rem;
     margin-right: 1rem;
     box-shadow: var(--shadow-box)

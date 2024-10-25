@@ -70,6 +70,7 @@ class user_class extends db_connection
             {
                 // create session variable
                 $_SESSION['user_id'] = $userid;
+                $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $username;
                 $_SESSION['user_level'] = $userlevel;
                 return true;

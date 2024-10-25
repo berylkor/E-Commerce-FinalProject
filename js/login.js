@@ -96,7 +96,7 @@ function validateSignupForm(event)
 function validateLoginForm(event)
 {
     let email = document.forms["loginform"]["email"].value;
-    let ppassword = document.forms["signupform"]["ppassword"].value;
+    let ppassword = document.forms["loginform"]["ppassword"].value;
 
     // Email Field Validation
     if (email === "") 

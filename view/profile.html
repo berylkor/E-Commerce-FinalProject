@@ -29,8 +29,13 @@
     <main>
         <div class="personaldetails">
             <!-- background Space -->
-            <div class="backgroundspace"></div>
-            <div class="imagecontainer"></div>
+            <div class="backgroundspace">
+            </div>
+            <div class="imagecontainer">
+                <img src="../images/profile.jpeg" alt="user profile image" id="profileimage">
+                <span class="material-symbols-outlined" id="upload"> add_a_photo </span>
+                <input type="file" id="imageinput" name="imageinput" accept="image/*" style="display: none;">
+            </div>
     
             <!-- Profile -->
             <div class="profile_container">
@@ -76,38 +81,7 @@
         <div class="payments">
             <div class="payment_container">
                 <h4>Debit/Credit Card</h4>
-                <div class="input_container">
-                    <label for="cardnumber">Card Number</label>
-                    <div class="input_field">
-                        <input type="text" id="cardnumber" placeholder="5284 5284 5284 5284">
-                        <div class="cardicons">
-                            <i class="fab fa-cc-visa"></i>
-                            <i class="fab fa-cc-mastercard"></i>
-                            <i class="fab fa-cc-amex"></i>
-                            <i class="fab fa-cc-jcb"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="input_container">
-                    <label for="expirydate">Expiration Date</label>
-                    <input type="text" id="expirydate" placeholder="MM / YY">
-                </div>
-                <div class="input_container">
-                    <label for="cvc">Security Code</label>
-                    <input type="text" id="cvc" placeholder="CVC">
-                </div>
-                <p class="disclaimer">
-                    By providing your card information, you allow <span id="brandname">NicheNest</span>  
-                    to charge your card for future payments in accordance with their terms.
-                </p>
-                <button id="payment_btn">Confirm</button>
-            </div>
-            <div class="paypal"></div>
-            <div class="venmo"></div>
-    
-            <!-- Role Change -->
-            <div class="roles_container">
-                <form action="">
+                <form action="" method="post">
                     <div class="input_container">
                         <label for="cardnumber">Card Number</label>
                         <div class="input_field">
@@ -135,13 +109,23 @@
                     <button id="payment_btn">Confirm</button>
                 </form>
             </div>
+    
+            <!-- Role Change -->
+            <!-- <div class="roles_container">
+                <p>Interested in being a personal shopper or a reviewer?</p>
+                <form action="">
+                    <label for="usertype">Partner:</label>
+                    
+                </form>
+            </div> -->
         </div>
 
         <div class="logout_container">
             <ul>
-                <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
+                <li id="logout"> <a id="logout_link" href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
             </ul>
         </div>
     </main>
 </body>
+<script src="../js/profile.js"></script>
 </html>

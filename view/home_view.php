@@ -1,6 +1,14 @@
 <?php
     include("../settings/core.php");
     check_login();
+
+    session_start();
+
+    if (isset($_SESSION['user_email']) && isset($_SESSION['user_name']))
+    {
+        $email = $_SESSION['user_email'];
+        $username = $_SESSION['user_name'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +32,16 @@
         <div class="user_container">
             <img src="../images/fillin_profile.png" alt="logo" width="50px" height="50px">
             <div class="profile_details">
-                <p>Beryl Koram</p>
-                <p>beryl.k@gmail.com</p>
+                <p>
+                    <?php echo $username; ?>
+                </p>
+                <p>
+                    <?php echo $email; ?>
+                </p>
             </div>
-            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            <a href="profile.html" style="text-decoration: none;">
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            </a>
         </div>
     </header>
 
@@ -111,7 +125,7 @@
                     <p>Clothes</p>
                 </div>
                 <div class="btn">
-                    <button>Start Chat</button>
+                    <button>View List</button>
                     <button>Place Order</button>
                 </div>
             </div>
