@@ -20,6 +20,7 @@ CREATE TABLE `users`
     `user_id` INT(11) NOT NULL AUTO_INCREMENT,
     `user_name` VARCHAR(100) NOT NULL,
     `user_email` VARCHAR(100) NOT NULL UNIQUE,
+    `user_contact` VARCHAR(100) NOT NULL,
     `user_pass` VARCHAR(250) NOT NULL,
     `user_location` VARCHAR(50) NOT NULL,
     `user_type` ENUM('Customer', 'Admin', 'Expert', 'Personal Shopper') DEFAULT 'Customer',

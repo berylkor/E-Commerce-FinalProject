@@ -13,8 +13,8 @@
                 
         if ($login === true)
         {
-            // redirect to the welcome page
-            header("Location:../view/welcome_view.php");
+            // redirect to the home page
+            header("Location:../view/home_view.php");
             exit;
         }
         else

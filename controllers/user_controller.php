@@ -3,9 +3,9 @@
 include("../classes/user_class.php");
 
 // function to call add user function from user class
-function add_user_ctr($username, $email, $ppassword, $country){
+function add_user_ctr($username, $email, $pnumber, $ppassword, $country){
 	$adduser=new user_class();
-	return $adduser->add_user($username, $email, $ppassword, $country);
+	return $adduser->add_user($username, $email, $pnumber, $ppassword, $country);
 }
 
 // function to call login user function from user class

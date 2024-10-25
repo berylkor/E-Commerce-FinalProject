@@ -13,14 +13,15 @@
     <header>
         <h2>NicheNest</h2>
         <div>
-            <button><a href="home.html" style="text-decoration: none;">Home</a></button>
-            <button>About Us</button>
+            <button><a href="landing_view.php" style="text-decoration: none;">Home</a></button>
+            <button><a href="about_view.php" style="text-decoration: none;">About Us</a></button>
         </div>
     </header>
     <main>
         <div class="container">
             <div class="curved-shape"></div>
             <div class="curved-shape2"></div>
+            <!-- Login Form -->
             <div class="form-box Login">
                 <h2 class="animation" style="--D:0">Login</h2>
                 <form action="../actions/login_action.php" method="post" name="loginform" id="loginform" onsubmit="return validateLoginForm()">
@@ -39,7 +40,8 @@
                     <div class="input-box animation" style="--D:3">
                         <button class="btn" name="btn" type="submit">Login</button>
                     </div>
-    
+                    
+                    <!-- Link to Sign up form -->
                     <div class="regi-link animation" style="--D:4">
                         <p>Don't have an account? <a href="#" class="SignupLink">Sign Up</a></p>
                     </div>
@@ -50,6 +52,7 @@
                 <p class="animation" style="--D:1"> Everything you need in one place</p>
             </div>
 
+            <!-- Signup Form -->
             <div class="form-box Register">
                 <h2 class="animation" style="--li:17;">Sign Up</h2>
                 <form action="../actions/signup_action.php" method="post" name="signupform" id="signupform" onsubmit="return validateSignupForm()">
@@ -64,24 +67,31 @@
                         <label for="email">Email</label>
                         <span class="material-symbols-outlined"> mail </span>
                     </div>
-    
+
                     <div class="input-box animation" style="--li:20;">
+                        <input type="text" id="pnumber" name="pnumber" required>
+                        <label for="pnumber">Phone Number</label>
+                        <span class="material-symbols-outlined"> call </span>
+                    </div>
+    
+                    <div class="input-box animation" style="--li:21;">
                         <input type="password" id="ppassword" name="ppassword" required>
                         <label for="ppassword">Password</label>
                         <span class="material-symbols-outlined"> lock </span>
                     </div>
 
-                    <div class="input-box animation" style="--li:21;">
+                    <div class="input-box animation" style="--li:22;">
                         <input type="text" id="country" name="country" required>
                         <label for="country">Country</label>
                         <span class="material-symbols-outlined"> globe </span>
                     </div>
     
-                    <div class="input-box animation" style="--li:22;">
+                    <div class="input-box animation" style="--li:23;">
                         <button class="btn" id="btn" name="btn" type="submit">Sign Up</button>
                     </div>
-    
-                    <div class="regi-link animation" style="--li:23;">
+
+                    <!-- Link to Login Form -->
+                    <div class="regi-link animation" style="--li:24;">
                         <p>Don't have an account? <a href="#" class="LoginLink">Login</a></p>
                     </div>
                 </form>
