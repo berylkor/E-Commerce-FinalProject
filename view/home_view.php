@@ -39,7 +39,7 @@
                     <?php echo $email; ?>
                 </p>
             </div>
-            <a href="profile.html" style="text-decoration: none;">
+            <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
         </div>
@@ -56,9 +56,9 @@
                 <span class="material-symbols-outlined">menu</span>
             </div>
             <ul>
-                <li> <a href=""> <span class="material-symbols-outlined">flight</span> Travel </a> </li>
-                <li> <a href=""> <span class="material-symbols-outlined">nightlife</span> Media </a> </li>
-                <li> <a href=""> <span class="material-symbols-outlined">cardiology</span> Health </a> </li>
+                <li> <a href=""> <span class="material-symbols-outlined">flight</span> Media </a> </li>
+                <li> <a href=""> <span class="material-symbols-outlined">nightlife</span> Entertainment </a> </li>
+                <li> <a href=""> <span class="material-symbols-outlined">cardiology</span> Artifacts </a> </li>
                 <li> <a href=""> <span class="material-symbols-outlined">local_dining</span> Food </a> </li>
                 <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
             </ul>
