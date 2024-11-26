@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners</title>
+    <link rel="stylesheet" href="../css/partners.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h2>NicheNest</h2>
+        <div>
+            <button><a href="about_view.php" style="text-decoration: none;">About Us</a></button>
+            <button><a href="landing_view.php" style="text-decoration: none;">Home</a></button>
+        </div>
+    </header>
+    
+    <main>
+        <h4>Which of Our Partners are You Applying for:</h4>
+        <div class="role_selection">
+            <form action="" method="post">
+                <div class="role_item">
+                    <input type="radio" name="role_option" class="role_option" id="role_expert" value="1">
+                    <label for="role_expert">Expert Reviewer</label>
+                </div>
+    
+                <div class="role_item">
+                    <input type="radio" name="role_option" class="role_option" id="role_shopper" value="2">
+                    <label for="role_shopper">Personal Shopper<label>
+                </div>
+    
+                <div class="btn_container">
+                    <button name="role_btn" class="role_btn">Confirm</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="expertform_container">
+            <h3 class="animation" style="--D:0">Expert Reviewers Signup Form</h3>
+            <form action="" method="post">
+                <div class="input-box animation" style="--D:1">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                    <span class="material-symbols-outlined"> person </span>
+                </div>
+
+                <div class="input-box animation" style="--D:2">
+                    <input type="text" id="email" name="email" required>
+                    <label for="email">Email</label>
+                    <span class="material-symbols-outlined"> mail </span>
+                </div>
+
+                <div class="input-box animation" style="--D:3">
+                    <input type="text" id="pnumber" name="pnumber" required>
+                    <label for="pnumber">Phone Number</label>
+                    <span class="material-symbols-outlined"> call </span>
+                </div>
+
+                <div class="input-box animation" style="--D:4">
+                    <input type="password" id="ppassword" name="ppassword" required>
+                    <label for="ppassword">Password</label>
+                    <span class="material-symbols-outlined"> lock </span>
+                </div>
+
+                <div class="input-box animation" style="--D:5">
+                    <input type="text" id="profession" name="profession" required>
+                    <label for="profession">Profession</label>
+                    <span class="material-symbols-outlined"> work </span>
+                </div>
+
+                <div class="input-box animation" style="--D:6">
+                    <button class="btn" name="btn" type="submit">Signup</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="shopperform_container">
+            <h3 class="animation" style="--D:0">Personal Shoppers Signup Form</h3>
+            <form action="" method="post">
+                <div class="input-box animation" style="--D:1">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                    <span class="material-symbols-outlined"> person </span>
+                </div>
+
+                <div class="input-box animation" style="--D:2">
+                    <input type="text" id="email" name="email" required>
+                    <label for="email">Email</label>
+                    <span class="material-symbols-outlined"> mail </span>
+                </div>
+
+                <div class="input-box animation" style="--D:3">
+                    <input type="text" id="pnumber" name="pnumber" required>
+                    <label for="pnumber">Phone Number</label>
+                    <span class="material-symbols-outlined"> call </span>
+                </div>
+
+                <div class="input-box animation" style="--D:4">
+                    <input type="password" id="ppassword" name="ppassword" required>
+                    <label for="ppassword">Password</label>
+                    <span class="material-symbols-outlined"> lock </span>
+                </div>
+
+                
+
+                <div class="input-box animation" style="--D:6">
+                    <button class="btn" name="btn" type="submit">Signup</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+</body>
+</html>

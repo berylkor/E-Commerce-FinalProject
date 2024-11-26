@@ -1,131 +1,182 @@
-
--- Create Privileges Table
-CREATE TABLE `privileges`
+-- Roles Table
+CREATE TABLE roles 
 (
-    `privilege_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `privilege_name` ENUM('BRONZE', 'SILVER', 'GOLD'),
-    `privilege_point` INT(11),
-    `privilege_equivalence` DOUBLE NOT NULL,
-    PRIMARY KEY (`privilege_id`)
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    role_name ENUM('Administrator', 'Customer', 'Expert Reviewer', 'Personal Shopper') NOT NULL UNIQUE
 );
 
--- Insert Values into Privileges Table
-INSERT INTO `privileges` (`privilege_id`, `privilege_name`, `privilege_point`, `privilege_equivalence`) VALUES (1, 'BRONZE', 0, 0),
-                                                                                                               (2, 'SILVER', 1000, 2000),
-                                                                                                               (3, 'GOLD', 3000, 6000);
+INSERT INTO roles (role_name) VALUES
+    ('Administrator'),
+    ('Customer'),
+    ('Expert Reviewer'),
+    ('Personal Shopper');
 
--- Create Users Table
-CREATE TABLE `users`
+-- Users Table
+CREATE TABLE users 
 (
-    `user_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `user_name` VARCHAR(100) NOT NULL,
-    `user_email` VARCHAR(100) NOT NULL UNIQUE,
-    `user_contact` VARCHAR(100) NOT NULL,
-    `user_pass` VARCHAR(250) NOT NULL,
-    `user_location` VARCHAR(50) NOT NULL,
-    `user_type` ENUM('Customer', 'Admin', 'Expert', 'Personal Shopper') DEFAULT 'Customer',
-    `user_level` INT(11) NOT NULL DEFAULT 4,
-    `user_image` VARCHAR(250),
-    `user_privilege` INT(11) DEFAULT 1,
-    PRIMARY KEY (`user_id`),
-    CONSTRAINT `fk_user_privilege` FOREIGN KEY (`user_privilege`) REFERENCES `privileges`(`privilege_id`)
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES roles(role_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create Categories Table
-CREATE TABLE `categories`
+-- Approvals Table
+CREATE TABLE approvals 
 (
-    `cat_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `cat_name` ENUM('Entertainment', 'Food', 'Media', 'Artifacts'),
-    PRIMARY KEY (`cat_id`)
+    approval_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    approval_status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
+    approval_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Insert Values into Categories Table
-INSERT INTO `categories` (`cat_id`, `cat_name`) VALUES (1, 'Entertainment'), 
-                                                       (2, 'Food'), 
-                                                       (3, 'Media'), 
-                                                       (4, 'Artifacts');
-
--- Create Brands Table
-CREATE TABLE `brands`
+-- Privileges Table
+CREATE TABLE privileges
 (
-    `brand_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `brand_name` VARCHAR(100) NOT NULL,
-    `brand_description` VARCHAR(500),
-    `brand_image` VARCHAR(250),
-    PRIMARY KEY (`brand_id`)
+    privilege_id INT AUTO_INCREMENT PRIMARY KEY,
+    tier ENUM('Basic Shopper', 'Essential Shopper', 'Premium Shopper', 'Elite Shopper') DEFAULT 'Basic Shopper',
+    monthly_fee DECIMAL(10, 2) NOT NULL,
+    usage_total INT NOT NULL
 );
 
--- Create Products Table
-CREATE TABLE `products`
+INSERT INTO privileges (tier, monthly_fee, usage_total) VALUES
+    ('Basic Shopper', 0, 0),
+    ('Essential Shopper', 19.99, 10),
+    ('Premium Shopper', 29.99, 30),
+    ('Elite Shopper', 69.99, 10000000);
+
+-- Subscriptions Table
+CREATE TABLE subscriptions 
 (
-    `product_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `product_name` VARCHAR(100) NOT NULL,
-    `product_brand` INT(11) NOT NULL,
-    `product_image` VARCHAR(250) NOT NULL,
-    `aggregate_score` DOUBLE,
-    PRIMARY KEY (`product_id`),
-    CONSTRAINT `fk_product_brand` FOREIGN KEY (`product_brand`) REFERENCES `brands`(`brand_id`)
+    subscription_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    privilege_id INT NOT NULL DEFAULT 1,
+    usage_count INT DEFAULT 0,
+    points INT DEFAULT 0,
+    year INT NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (privilege_id) REFERENCES privileges(privilege_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create Partners Table
-CREATE TABLE `partners`
+-- Transactions Table
+CREATE TABLE transactions 
 (
-    `partner_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `partner_name` VARCHAR(100) NOT NULL,
-    `partner_interest` INT(11) NOT NULL,
-    `partner_type` INT(11) NOT NULL,
-    PRIMARY KEY (`partner_id`),
-    CONSTRAINT `fk_partner_interest` FOREIGN KEY (`partner_interest`) REFERENCES `categories`(`cat_id`)
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    points_earned INT GENERATED ALWAYS AS (FLOOR(amount / 2)) STORED,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create Reviews Table
-CREATE TABLE `reviews`
+-- Themes Table
+CREATE TABLE themes
 (
-    `review_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `review_product` INT(11) NOT NULL,
-    `review_score` INT(11) NOT NULL,
-    `review_details` VARCHAR(500),
-    `partner_id` INT(11) NOT NULL,
-    PRIMARY KEY (`review_id`),
-    CONSTRAINT `fk_review_product` FOREIGN KEY (`review_product`) REFERENCES `products`(`product_id`),
-    CONSTRAINT `fk_review_partner` FOREIGN KEY (`partner_id`) REFERENCES `partners`(`partner_id`)
+    theme_id INT AUTO_INCREMENT PRIMARY KEY,
+    theme_name VARCHAR(255) NOT NULL
 );
 
--- Create Payment Details Table
-CREATE TABLE `payment_details`
+INSERT INTO themes (theme_name) VALUES
+    ('Media'),
+    ('Entertainment'),
+    ('Artifacts'),
+    ('Food Experiences');
+
+-- Products Table
+CREATE TABLE products 
 (
-    `gateway_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `gateway_name` VARCHAR(100) NOT NULL,
-    `gateway_type` VARCHAR(100),
-    `user_id` INT(11) NOT NULL,
-    PRIMARY KEY (`gateway_id`),
-    CONSTRAINT `fk_payment_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    theme_id INT NOT NULL,
+    link VARCHAR(2083) NOT NULL,
+    image_url VARCHAR(2083),
+    avg_score DECIMAL(3, 2) DEFAULT 0,
+    FOREIGN KEY (theme_id) REFERENCES themes(theme_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create Transactions Table
-CREATE TABLE `transactions`
+-- Reviews Table
+CREATE TABLE reviews 
 (
-    `transaction_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `transaction_amount` DOUBLE NOT NULL,
-    `payment_method` VARCHAR(100),
-    `transaction_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `gateway` INT(11) NOT NULL,
-    `product` INT(11) NOT NULL,
-    `user_id` INT(11) NOT NULL,
-    PRIMARY KEY (`transaction_id`),
-    CONSTRAINT `fk_transaction_gateway` FOREIGN KEY (`gateway`) REFERENCES `payment_details`(`gateway_id`),
-    CONSTRAINT `fk_transaction_product` FOREIGN KEY (`product`) REFERENCES `products`(`product_id`),
-    CONSTRAINT `fk_transaction_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    reviewer_id INT NOT NULL,
+    score TINYINT NOT NULL CHECK (score BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (reviewer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Create Cart Table
-CREATE TABLE `cart`
+-- Sourced Items Table
+CREATE TABLE sourced_items 
 (
-    `cart_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `user_id` INT(11) NOT NULL,
-    `product_id` INT(11) NOT NULL,
-    `quantity` INT(11) NOT NULL,
-    PRIMARY KEY (`cart_id`),
-    CONSTRAINT `fk_cart_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`),
-    CONSTRAINT `fk_cart_product` FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`)
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    shopper_id INT NOT NULL,
+    description TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (shopper_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Conversations Table
+CREATE TABLE conversations 
+(
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    shopper_id INT NOT NULL,
+    sender ENUM('Customer', 'Shopper') NOT NULL,
+    message TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (shopper_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Commissions Table
+CREATE TABLE commissions 
+(
+    commission_id INT AUTO_INCREMENT PRIMARY KEY,
+    shopper_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    sale_date DATE NOT NULL,
+    FOREIGN KEY (shopper_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Shipping Fees Table
+CREATE TABLE shipping_fees 
+(
+    fee_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    fee DECIMAL(10, 2) DEFAULT 0,
+    waived BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Orders Table
+CREATE TABLE orders 
+(
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    shopper_id INT DEFAULT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    shipping_fee DECIMAL(10, 2) DEFAULT 0,
+    status ENUM('Pending', 'Shipped', 'Delivered', 'Cancelled') DEFAULT 'Pending',
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (shopper_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Order Details Table
+CREATE TABLE order_details 
+(
+    orderdetail_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (item_id) REFERENCES sourced_items(item_id) ON DELETE CASCADE ON UPDATE CASCADE
 );

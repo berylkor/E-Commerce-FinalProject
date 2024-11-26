@@ -1,0 +1,25 @@
+-- DELIMITER $$
+
+-- -- Trigger to Update Points After Transaction
+-- CREATE TRIGGER update_points_after_transaction
+-- AFTER INSERT ON transactions
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE subscriptions
+--     SET points = points + NEW.points_earned
+--     WHERE customer_id = NEW.customer_id;
+
+--     IF (SELECT points FROM subscriptions WHERE customer_id = NEW.customer_id) >= 5000 THEN
+--         UPDATE subscriptions
+--         SET tier = 'Premium Shopper'
+--         WHERE customer_id = NEW.customer_id;
+--     END IF;
+
+--     IF (SELECT points FROM subscriptions WHERE customer_id = NEW.customer_id) >= 25000 THEN
+--         UPDATE subscriptions
+--         SET tier = 'Elite Shopper'
+--         WHERE customer_id = NEW.customer_id;
+--     END IF;
+-- END$$
+
+-- DELIMITER ;

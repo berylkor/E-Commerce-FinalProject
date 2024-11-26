@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root
+{
+    --color-logo: #3457D5;
+    --color-highlight: #2a52be;
+    --color-special: #6495ED;
+    --color-font: #ffffff;
+    --color-background: #F0F8FF;
+    --color-background-2:#011225;
+    --color-header: #14141e;
+    /* --color-gradient: linear-gradient(#25252b, var(--color-highlight), #25252b, var(--color-highlight)) */
+    --shadow: 0 0 10px var(--color-highlight);
+    --shadow-box: 0px 4px 6px rgba(0, 0, 0, 0.1),
+                  0px 1px 3px rgba(0, 0, 0, 0.08);
+    --border-radius:20px;
+    --logo-fontsize: 3rem;
+}
+
+*
+{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html
+{
+    width: 100%;
+    height: 100%;
+}
+
+body 
+{
+    display: grid;
+    grid-template-rows: 8% 92%;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: 
+    "header header"
+    "menu main";
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+}
+
+header
+{
+    grid-area: header;
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    color: var(--color-font);
+    background: var(--color-background);
+}
+
+header > h2
+{
+    font-family: 'Great Vibes', cursive;
+    font-size: var(--logo-fontsize);
+    color: var(--color-logo);
+}
+
+header > div 
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header > div > button
+{
+    cursor: pointer;
+    border: 2px solid var(--color-highlight);
+    border-radius: 20px;
+    background-color: var(--color-highlight);
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    width: fit-content;
+    height: 2.5rem;
+    margin-right: 1rem;
+    box-shadow: var(--shadow-box)
+}
+
+header > div > button > a
+{
+    color: var(--color-font);
+}
+
+header img
+{
+    cursor: pointer;
+}
+
+.user_container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    color: var(--color-logo);
+}
+
+.points
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-highlight);
+}
+
+.profile_details
+{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    color: var(--color-logo);
+}
+
+.menu_container 
+{
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 1rem;
+    background-color: var(--color-background);
+}
+
+.container
+{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 40%;
+    border: 2px solid #3457D5;
+    border-radius: 20px;
+    background-color: #3457D5;
+    box-shadow: var(--shadow-box);
+}
+
+.container:hover
+{
+    box-shadow: var(--shadow);
+}
+
+.menu_content
+{
+    width: 80%;
+    height: 55%;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--color-background-2);
+
+}
+
+.menuheader
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menuheader > h4
+{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+ul
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+    width: 80%;
+}
+
+li > a
+{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: #000000;
+    transition: transform 0.4s ease-in-out; 
+}
+
+
+li > a:hover
+{
+    color: var(--color-highlight);
+    transform: translateX(5px);
+}
+
+li > a::after 
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-highlight);
+    transition: width 0.4s ease-in-out;
+}
+
+li > a:hover::after
+{
+    width: 100%;
+}
+
+#logout
+{
+    padding-top: 4rem;
+}
+
+li > a > span
+{
+    padding-right: 1rem;
+}
+
+main 
+{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    background-color: var(--color-background);
+    gap: 2%;
+}
+
+.ratings_section, .personalshopping_section
+{
+    padding: 6rem 2rem;
+}
+
+.rankinglist, .expertreviews, .shopperchat, .curatedlist
+{
+    border-radius: 20px;
+    background-color: #ffffff;
+    height: 45%;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-box);
+}
+
+.rankinglist:hover, .expertreviews:hover, .shopperchat:hover, .curatedlist:hover
+{
+    box-shadow:var(--shadow)
+}
+
+.top
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top > p
+{
+    font-size: 0.7rem;
+}
+
+#trophy
+{
+    color: var(--color-special);
+}
+
+#rating
+{
+    color: var(--color-highlight);
+}
+
+#bubble 
+{
+    color: var(--color-highlight);
+}
+
+#token
+{
+    color: var(--color-special);
+}
+
+.rankinglist > h2
+{
+    font-size: 2.2rem;
+    color: var(--color-special);
+} 
+
+.expertreviews > h2
+{
+    font-size: 2.2rem;
+    color: var(--color-highlight);
+}
+
+.shopperchat > h2
+{
+    font-size: 2.2rem;
+    color: var(--color-highlight);
+}
+
+.curatedlist > h2
+{
+    font-size: 2.2rem;
+    color: var(--color-special);
+}
+
+.tag
+{
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 8px;
+}
+
+.tag > p
+{
+    display: inline;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    padding: 0.1rem 1rem;
+    white-space: nowrap;
+}
+
+.rankinglist > .tag > p, .curatedlist > .tag > p
+{
+    border:1px solid var(--color-special);
+}
+
+.expertreviews > .tag > p, .shopperchat > .tag > p
+{
+    border:1px solid var(--color-highlight);
+}
+
+.rankinglist > button, .expertreviews > button
+{
+    cursor: pointer;
+    display: block;
+    border: none; 
+    border-radius: 40px; 
+    font-size: 1rem;
+    color: var(--color-font);
+    padding: 0.5rem;
+    margin-left: auto;
+}
+
+.rankinglist button
+{
+    background-color: var(--color-special);
+}
+
+.expertreviews > button
+{
+    background-color: var(--color-highlight)
+}
+
+.btn
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.shopperchat button, .curatedlist button
+{
+    cursor: pointer;
+    display: inline;
+    border: none; 
+    border-radius: 40px; 
+    font-size: 1rem;
+    color: var(--color-font);
+    padding: 0.5rem;
+}
+
+.shopperchat button
+{
+    background-color: var(--color-highlight)
+}
+
+.curatedlist button
+{
+    background-color: var(--color-special);
+}
