@@ -5,7 +5,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
         // user details for sign up user
-        $user_name = $_POST["fname"];
+        $user_name = $_POST["username"];
         $user_email = $_POST["email"];
         $user_number = $_POST["pnumber"];
         $user_pass = $_POST["ppassword"];
@@ -22,8 +22,9 @@
         else 
         {
             // redirect back to the login if it does not work
-            header("Location: ../view/signup_view.php?signup_unsuccessful");
+            header("Location: ../view/login_view.php?signup_unsuccessful");
         }
-    }       
+    }
+        
     
 ?>

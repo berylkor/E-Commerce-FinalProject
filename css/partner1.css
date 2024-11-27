@@ -61,6 +61,14 @@ aside
 }
 
 /* Menu Header */
+.menu_header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .menu_header h4 
 {
     font-size: 1.5rem;

@@ -1,3 +1,6 @@
+<?php
+    include_once("../functions/display_profile.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +25,11 @@
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p>
+                <!-- <p>Beryl Koram</p>
+                <p>beryl.koram@gmail.com</p> -->
+                <?php
+                    displayProfile();
+                ?>
             </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
@@ -46,10 +52,10 @@
             </div>
             <ul>
                 <li> 
-                    <a href="partnereviews.html"> <span class="material-symbols-outlined">flight</span> New Review </a> 
+                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> New Review </a> 
                 </li>
                 <li>
-                    <a href="past_reviews.html"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
+                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
                 </li>
                 <li>
                     <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Personal </a> 
@@ -74,7 +80,7 @@
                 <p>
                     Share your expertise by reviewing niche products. Help users make informed decisions with your valuable insights.
                 </p>
-                <a href="new_review.html" class="cta_btn">Start a Review</a>
+                <a href="partnereviews_view.php" class="cta_btn">Start a Review</a>
             </div>
             <div class="role shopper">
                 <h2>For Personal Shoppers</h2>

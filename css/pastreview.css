@@ -62,14 +62,6 @@ aside
 }
 
 /* Menu Header */
-.menu_header
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
-
 .menu_header h4 
 {
     font-size: 1.5rem;
@@ -154,100 +146,72 @@ main
     grid-area: main;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: var(--padding-large);
-    overflow-y: scroll;
 }
 
-main > h3
-{
-    font-size: var(--fontsize-large);
-    font-weight: 500;
-}
-
-form 
-{
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: var(--border-radius-1);
-    box-shadow: var(--box-shadow-1);
-    width: 100%;
-    max-width: 900px;
-}
-
-form div
+.review-grid
 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 
-label 
+.review-card 
 {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    font-size: 1.1rem;
+    background-color: #ffffff;
+    box-shadow: var(--box-shadow-1);
+    border-radius: var(--border-radius);
+    padding: var(--padding-medium);
+    margin: var(--padding-small);
+    max-width: 20rem;
+    text-align: center;
+    overflow: hidden; /* Ensures long content doesn't break the design */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover 
+{
+    transform: scale(1.05); 
+    box-shadow: var(--box-shadow);
+}
+
+.review-image 
+{
+    width: 100%;
+    max-width: 10rem; /* Limit the size of the image */
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--padding-small);
+    box-shadow: var(--box-shadow-1);
+}
+
+.review-title 
+{
+    font-size: var(--fontsize-medium);
     font-weight: 500;
+    margin: var(--padding-small) 0;
     color: var(--color-text);
 }
 
-input, textarea, select
-{
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.3rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius-1);
-    outline: none;
-    background-color: #ffff;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+.review-score {
+    font-size: var(--fontsize-regular);
+    font-weight: 500;
+    color: var(--color-brand-2);
+    margin: var(--padding-small) 0;
 }
 
-select
-{
-    color: #807e7e;
+.review-theme {
+    font-size: var(--fontsize-regular);
+    font-weight: normal;
+    color: var(--color-text);
+    margin: 0.2rem 0;
 }
 
-input[type='file']
-{
-    color: #807e7e;
-}
-
-input:focus, textarea:focus, select:focus 
-{
-    border-color: var(--color-brand-2);
-    box-shadow: 0 0 5px var(--color-brand-2);
-}
-
-textarea 
-{
-    resize: vertical;
-}
-
-.submit-btn 
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-brand-3);
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover 
-{
-    background-color: var(--color-brand-4);
+.review-content {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: var(--padding-small) 0;
+    text-align: justify; 
 }

@@ -35,7 +35,7 @@
             </div>
             <div class="form-container">
                 <h2>Signup Form </h2>
-                <form action="" method="post" id="signupForm" class="inputform">
+                <form action="../actions/signup_action.php" method="post" id="signupForm" class="inputform">
                     <!-- Email field to signup -->
                     <div>
                         <label for="email">Email <span>*</span></label>
@@ -77,7 +77,7 @@
                     <!-- Link to the sign up page -->
                     <p>
                         Already have an account 
-                        <a href="login.html">Login here</a>
+                        <a href="login_view.php">Login here</a>
                     </p>
         
                 </form>

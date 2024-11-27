@@ -1,3 +1,7 @@
+<?php
+    include_once("../functions/display_profile.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,18 +21,23 @@
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about.html"><button class="header_btn"> About Us</button></a>
-            <a href="welcome.html"><button class="header_btn"> Home </button></a>
-            <a href="">    <button class="header_btn"> Reviews </button></a>
-            <a href="">    <button class="header_btn"> Rankings </button></a>
+            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
             <a href="">    <button class="header_btn"> Shopping </button></a>
+            <a href="logout.php">
+                <button class="header_btn"> Logout </button>
+            </a>
         </div>
         <!-- User details -->
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p>
+                <!-- <p>Beryl Koram</p>
+                <p>beryl.koram@gmail.com</p> -->
+                <?php
+                    displayProfile();
+                ?>
             </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
@@ -50,7 +59,7 @@
     <main>
         <div class="rankinglist_section">
                 <div class="top">
-                    <p> 6 September 2024 </p>
+                    <p> <?php echo date('j F Y') ?> </p>
                     <span id="trophy" class="material-symbols-outlined">emoji_events</span>
                 </div>
                 <h2> Weekly Ranking List </h2>
@@ -59,14 +68,14 @@
                     <p>Canon</p>
                     <p>Hilton</p>
                 </div>  
-                <a href="rankings.html">
+                <a href="rankings_view.php">
                     <button>Details</button>
                 </a>
         </div>
 
         <div class="expertreviews_section">
                 <div class="top">
-                    <p> 6 September 2024 </p>
+                    <p> <?php echo date('j F Y') ?> </p>
                     <span id="rating" class="material-symbols-outlined">reviews</span>
                 </div>
                 <h2> Expert Ratings </h2>
@@ -75,12 +84,14 @@
                     <p>Entrepreneur</p>
                     <p>Restaurateur</p>
                 </div>  
-                <button>Details</button>
+                <a href="rankings_view.php">
+                    <button>Details</button>
+                </a>
         </div>
 
         <div class="shopperchat_section">
                 <div class="top">
-                    <p> 6 September 2024 </p>
+                    <p> <?php echo date('j F Y') ?> </p>
                     <span id="bubble" class="material-symbols-outlined">maps_ugc</span>
                 </div>
                 <h2>Chat with Shoppers</h2>
@@ -96,7 +107,7 @@
         </div>
         <div class="curatedlist_section">
                 <div class="top">
-                    <p> 6 September 2024 </p>
+                    <p> <?php echo date('j F Y') ?> </p>
                     <span id="token" class="material-symbols-outlined">token</span>
                 </div>
                 <h2>Niche Curated List</h2>

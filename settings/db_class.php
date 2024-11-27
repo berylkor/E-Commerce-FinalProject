@@ -141,6 +141,16 @@ class db_connection
 		return mysqli_num_rows($this->results);
 
 	}
+
+
+	function db_insert_id()
+	
+	{
+		if ($this->db !== null){
+			return mysqli_insert_id($this->db);
+		}
+		return false;
+	}
 	
 }
 ?>

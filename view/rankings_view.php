@@ -1,3 +1,8 @@
+<?php
+    include_once("../functions/display_profile.php");
+    include_once("../functions/display_themereviews.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,18 +22,23 @@
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about.html"><button class="header_btn"> About Us</button></a>
-            <a href="welcome.html"><button class="header_btn"> Home </button></a>
-            <a href="">    <button class="header_btn"> Reviews </button></a>
-            <a href="">    <button class="header_btn"> Rankings </button></a>
+            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
             <a href="">    <button class="header_btn"> Shopping </button></a>
+            <a href="logout.php">
+                <button class="header_btn"> Logout </button>
+            </a>
         </div>
         <!-- User details -->
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p>
+                <!-- <p>Beryl Koram</p>
+                <p>beryl.koram@gmail.com</p> -->
+                <?php
+                    displayProfile();
+                ?>
             </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
@@ -78,7 +88,7 @@
         <section id="media_container" class="list_container">
             <h2> Media </h2>
             <div class="grid_container">
-                <div class="product_card">
+                <!-- <div class="product_card">
                     <div class="top">
                         <h4 class="ranking_no">1</h4>
                         <p class="score">4.67 / 5.00</p>
@@ -87,15 +97,17 @@
                     <p id="item_name">Camera Kit</p>
                     <div class="prod_description"> Comes with a camera, two extra lenses</div>
                     <a href="productreviews.html">Click for more</a>
-                </div>
-    
+                </div> -->
+                <?php
+                    display_themereviews(1)
+                ?>
             </div>
         </section>
 
         <section id="ent_container" class="list_container">
             <h2> Entertainment </h2>
             <div class="grid_container">
-                <div class="product_card">
+                <!-- <div class="product_card">
                     <div class="top">
                         <h4 class="ranking_no">1</h4>
                         <p class="score">4.67 / 5.00</p>
@@ -104,14 +116,17 @@
                     <p id="item_name">Camera Kit</p>
                     <div class="prod_description"> Comes with a camera, two extra lenses</div>
                     <a href="">Click for more</a>
-                </div>
+                </div> -->
+                <?php
+                    display_themereviews(2)
+                ?>
             </div>
         </section>
 
         <section id="artif_container" class="list_container">
             <h2> Artifacts </h2>
             <div class="grid_container">
-                <div class="product_card">
+                <!-- <div class="product_card">
                     <div class="top">
                         <h4 class="ranking_no">1</h4>
                         <p class="score">4.67 / 5.00</p>
@@ -120,14 +135,17 @@
                     <p id="item_name">Camera Kit</p>
                     <div class="prod_description"> Comes with a camera, two extra lenses</div>
                     <a href="">Click for more</a>
-                </div>
+                </div> -->
+                <?php
+                    display_themereviews(3)
+                ?>
             </div>
         </section>
 
         <section id="food_container" class="list_container">
             <h2> Food Experiences</h2>
             <div class="grid_container">
-                <div class="product_card">
+                <!-- <div class="product_card">
                     <div class="top">
                         <h4 class="ranking_no">1</h4>
                         <p class="score">4.67 / 5.00</p>
@@ -136,7 +154,10 @@
                     <p id="item_name">Camera Kit</p>
                     <div class="prod_description"> Comes with a camera, two extra lenses</div>
                     <a href="">Click for more</a>
-                </div>
+                </div> -->
+                <?php
+                    display_themereviews(4)
+                ?>
             </div>
         </section>
 

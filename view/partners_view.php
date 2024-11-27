@@ -21,6 +21,9 @@
             <a href="index.html">
                 <button class="header_btn"> Home </button>
             </a>
+            <a href="logout.php">
+                <button class="header_btn"> Logout </button>
+            </a>
         </div>
     </header>
 
@@ -50,7 +53,7 @@
 
             <div class="form_container hidden" id="expert_form">    
                 <h3>Expert Reviewers Signup Form</h3>
-                <form action="" method="post" id="reviewerForm" class="inputform">
+                <form action="../actions/add_expert_action.php" method="post" id="reviewerForm" class="inputform">
                     <div class="input-box">
                         <label for="username">Username</label>
                         <span class="material-symbols-outlined">person</span>
@@ -94,7 +97,7 @@
             
             <div class="form_container hidden" id="shopper_form">
                 <h3>Personal Shoppers Signup Form</h3>
-                <form action="" method="post" id="shopperForm" class="inputform">
+                <form action="../actions/add_shopper_action.php" method="post" id="shopperForm" class="inputform">
                     <div class="input-box">
                         <label for="username">Username</label>
                         <span class="material-symbols-outlined">person</span>

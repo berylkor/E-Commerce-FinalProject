@@ -191,7 +191,7 @@ main
     text-align: right; 
 }
 
-.details .purchaselink p 
+.details .purchaselink a 
 {
     display: inline-block; 
     color: var(--color-brand-2); 
@@ -201,7 +201,7 @@ main
     transition: color 0.3s ease; 
 }
 
-.details .purchaselink p:hover 
+.details .purchaselink a:hover 
 {
     text-decoration: underline;
 }

@@ -1,7 +1,10 @@
 <?php
     include "../controllers/user_controller.php";
     
-    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // fields for logging in
@@ -11,11 +14,19 @@
         // login function call
         $login = get_user_ctr($user_email, $user_pass);
                 
-        if ($login === true)
+        if ($login)
         {
-            // redirect to the home page
-            header("Location:../view/home_view.php");
-            exit;
+            if ($_SESSION['role_id'] == 2)
+            {
+                // redirect to the home page
+                header("Location:../view/welcome_view.php");
+                exit;
+            }
+            else if ($_SESSION['role_id'] == 3 or $_SESSION['role_id'] == 4)
+            {
+                header("Location:../view/dashboard_view.php");
+                exit;
+            }
         }
         else
         {

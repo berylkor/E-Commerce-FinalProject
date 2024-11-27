@@ -1,3 +1,7 @@
+<?php
+    include_once("../functions/display_profile.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +25,9 @@
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p>
+                <?php
+                    displayProfile();
+                ?>
             </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
@@ -45,10 +50,10 @@
             </div>
             <ul>
                 <li> 
-                    <a href="new_review.html"> <span class="material-symbols-outlined">flight</span> New Review </a> 
+                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> New Review </a> 
                 </li>
                 <li>
-                    <a href="past_reviews.html"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
+                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
                 </li>
                 <li>
                     <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Personal </a> 
@@ -60,7 +65,7 @@
 
     <main>
         <h3> Write and Share your review</h3>
-        <form action="" method="post" id="reviewform" name="inputform" enctype="multipart/form-data">
+        <form action="../actions/add_review_action.php" method="post" id="reviewform" name="inputform" enctype="multipart/form-data">
             <!-- Item Name Field -->
             <div>
                 <label for="itemname">Item Name</label>
@@ -88,11 +93,11 @@
                 <span class="material-symbols-outlined">palette</span>
             </div>
             <select name="theme" id="theme" required>
-                <option value="">--Select a Theme--</option>
-                <option value="">--Select a Theme--</option>
-                <option value="">--Select a Theme--</option>
-                <option value="">--Select a Theme--</option>
-                <option value="">--Select a Theme--</option>
+                <option value="0">--Select a Theme--</option>
+                <option value="1">Media</option>
+                <option value="2">Entertainment</option>
+                <option value="3">Artifacts</option>
+                <option value="4">Food Experiences</option>
                 
             </select>
         

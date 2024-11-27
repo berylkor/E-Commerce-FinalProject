@@ -125,48 +125,104 @@ main
     grid-area: curated;
 }
 
-.ratings_section, .personalshopping_section {
+.ratings_section, .personalshopping_section 
+{
     display: flex;
     justify-content: space-around;
     gap: var(--padding-medium);
     flex-wrap: wrap;
+
 }
 
-.rankinglist, .expertreviews, .shopperchat, .curatedlist {
-    background: var(--color-brand-2);
-    color: var(--color-text-1);
+/* General styles for all sections */
+.rankinglist_section, .expertreviews_section, .shopperchat_section, .curatedlist_section {
+    background-color: #ffffff;
     border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-1);
     padding: var(--padding-medium);
-    box-shadow: var(--box-shadow);
-    max-width: 300px;
+    margin: var(--padding-medium) auto;
+    width: 100%;
+    max-width: 30rem;
     text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.rankinglist .top, .expertreviews .top, .shopperchat .top, .curatedlist .top {
+.rankinglist_section:hover, .expertreviews_section:hover, 
+.shopperchat_section:hover, .curatedlist_section:hover {
+    transform: translateY(-0.3rem); /* Slight lift on hover */
+    box-shadow: var(--box-shadow-2); /* Stronger shadow on hover */
+}
+
+/* Top Section */
+.top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--padding-small);
+    color: var(--color-text-3);
+    font-size: var(--fontsize-smedium);
 }
 
-.rankinglist .tag, .expertreviews .tag, .shopperchat .tag, .curatedlist .tag {
+.top p {
+    margin: 0;
+}
+
+.material-symbols-outlined {
+    font-size: var(--fontsize-large);
+    color: var(--color-brand-2);
+}
+
+/* Heading Styles */
+h2 {
+    font-size: var(--fontsize-medium);
+    font-weight: bold;
+    margin: var(--padding-small) 0;
+    color: var(--color-text-1);
+}
+
+/* Tag Section */
+.tag {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap: var(--padding-small);
+    flex-wrap: wrap;
     margin: var(--padding-small) 0;
 }
 
-.rankinglist button, .expertreviews button, .shopperchat .btn button, .curatedlist .btn button {
-    border: none;
+.tag p {
+    background-color: var(--color-brand-2);
+    color: #ffffff;
     border-radius: var(--border-radius);
-    background: var(--color-brand-3);
-    color: var(--color-text-1);
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+    padding: 0.2rem 0.5rem;
     font-size: var(--fontsize-regular);
-    transition: background-color 0.3s ease;
 }
 
-.rankinglist button:hover, .expertreviews button:hover, .shopperchat .btn button:hover, .curatedlist .btn button:hover {
-    background: var(--color-brand-4);
+/* Buttons */
+a button, .btn button 
+{
+    background-color: var(--color-brand-3);
+    color: #ffffff;
+    font-size: var(--fontsize-regular);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.8rem 0.8rem;
+    margin: var(--padding-small) 0.5rem;
+    cursor: pointer;
+    box-shadow: var(--box-shadow-1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+a button:hover, .btn button:hover {
+    background-color: var(--color-brand-4);
+    transform: scale(1.05); 
+}
+
+
+.btn 
+{
+    display: flex;
+    justify-content: center;
+    gap: var(--padding-small);
+    margin-top: var(--padding-small);
 }
