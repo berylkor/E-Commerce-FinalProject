@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $reviewer = $_SESSION["user_id"];
 
     if(isset($_FILES['itemimage']) && $_FILES['itemimage']['error'] != UPLOAD_ERR_NO_FILE)
-        {
+    {
             $extensions = ['jpeg', 'jpg', 'png', 'gif', 'webp'];
             $filetmppath = $_FILES['itemimage']['tmp_name'];
             $filename = $_FILES['itemimage']['name'];
@@ -48,10 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
                 echo "Invalid file type or file exceeds 2MB Limit";
             }
-        }
-        else
-        {
-            $add = add_review_ctr($review_item, $reviewer, $review_score, $review_desc, $review_theme, $review_url);
+    }
+    else
+    {
+        $add = add_review_ctr($review_item, $reviewer, $review_score, $review_desc, $review_theme, $review_url);
             if ($add !== false)
             {
                 header("Location:../view/pastreviews_view.php");
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
                 echo "Error";
             }
-        }
+    }
 }
 
 ?>

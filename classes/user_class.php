@@ -1,8 +1,10 @@
 <?php
 
 //connect to database class
-require("../settings/db_class.php");
-session_start();
+require_once("../settings/db_class.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 /**
 *User class to handle all functions related to users
 */
@@ -141,6 +143,13 @@ class user_class extends db_connection
         $sql="INSERT INTO `users`(`name`, `email`, `contact`, `password`, `role_id`) VALUES ('$username','$email', '$pnumber', '$hashpassword', '4')";
         $query = $this->db_query($sql);
 
+    }
+
+    public function get_customers()
+    {
+        $ndb = new db_connection();	
+        $sql = "SELECT * FROM users WHERE role_id = '2'";
+        return $ndb->db_fetch_all($sql);
     }
 }
 

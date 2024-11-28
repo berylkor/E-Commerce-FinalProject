@@ -1,10 +1,15 @@
+<?php
+include_once("../functions/display_profile.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with Shopper</title>
-    <link rel="stylesheet" href="../css/chat.css">
+    <title>Curated Items</title>
+    <link rel="stylesheet" href="../css/cart.css">
     <link rel="stylesheet" href="../css/inner_footer.css">
     <link rel="stylesheet" href="../css/inner_header.css">
     <link rel="shortcut icon" href="../images/favicon_io/favicon.ico" type="image/x-icon">
@@ -60,61 +65,64 @@
                 <li>
                     <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
                 </li>
-            
+                <li>
+                    <a href="cart_view.php"> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
+                </li>
             </ul>
         </div>
     </aside>
 
     <main>
-        <div class="chat_container">
-            <!-- Chat Header -->
-            <div class="chat_header">
-                <h3>Chat with Personal Shopper</h3>
-                <span class="material-symbols-outlined">close</span>
-            </div>
-    
-            <!-- Chat Messages -->
-            <div class="chat_messages">
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Hello, I need help with camera recommendations.</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Can you share your budget?</p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>I want something that was designed by Artisans</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Heres a list of the products I found <a href="curatedlist_view.php">Show more</a> </p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Thank you</p>
-                    <span class="timestamp">10:30 AM</span>
+        <div class="shopping-cart-container">
+            <!-- Left Section: Shopping Bag -->
+            <div class="cart-items">
+                <h2>Shopping Bag</h2>
+
+                <div class="cart-item">
+                    <img src="../images/camera.jpg" alt="Floral Print Wrap Dress" class="item-image">
+                    <div class="item-details">
+                        <h4>Floral Print Wrap Dress</h4>
+                        <p class="item-meta">WOMEN</p>
+                        <p>Color: Blue | Size: 42</p>
+                    </div>
+                    <div class="item-price">$20.50</div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" min="1">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <div class="item-total">$41.00</div>
                 </div>
             </div>
-    
-            <!-- Chat Input -->
-            <form class="chat_input_form" id="chatForm">
-                <input type="text"    name="message" id="messageInput"  placeholder="Enter message..."    required />
-                <button type="submit">
-                    <span class="material-symbols-outlined">send</span>
-                </button>
-            </form>
+        
+            <!-- Right Section: Summary -->
+            <div class="cart-summary">
+                <h2>Calculated Shipping</h2>
+                <div class="shipping-form">
+                    <select>
+                        <option value="" disabled selected>Country</option>
+                        <option>Ghana</option>
+                    </select>
+                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="Street">
+                    <button class="button update">Update</button>
+                </div>
+                
+                <div class="cart-total">
+                    <h3>Cart Total</h3>
+                    <p>Cart Subtotal: <span>$71.50</span></p>
+                    <p>Delivery<span>$4.00</span></p>
+                    <h4>Total: <span>$67.50</span></h4>
+                    <button class="button checkout">Checkout</button>
+                </div>
+            </div>
         </div>
+        
     </main>
 
-    <!-- Page Footer -->
-    <footer>
-        <p>&copy; 2024 NicheNest</p>
-    </footer>
+<!-- Page Footer -->
+<footer>
+    <p>&copy; 2024 NicheNest</p>
+</footer>
 </body>
 </html>

@@ -1,10 +1,20 @@
+<?php
+    include_once("../functions/display_profile.php");
+    include_once("../functions/display_item.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$userid = $_SESSION["user_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with Shopper</title>
-    <link rel="stylesheet" href="../css/chat.css">
+    <title>Curated Items</title>
+    <link rel="stylesheet" href="../css/curatedlist.css">
     <link rel="stylesheet" href="../css/inner_footer.css">
     <link rel="stylesheet" href="../css/inner_header.css">
     <link rel="shortcut icon" href="../images/favicon_io/favicon.ico" type="image/x-icon">
@@ -60,56 +70,38 @@
                 <li>
                     <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
                 </li>
-            
+                <li>
+                    <a href="cart_view.php"> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
+                </li>
             </ul>
         </div>
     </aside>
 
     <main>
-        <div class="chat_container">
-            <!-- Chat Header -->
-            <div class="chat_header">
-                <h3>Chat with Personal Shopper</h3>
-                <span class="material-symbols-outlined">close</span>
-            </div>
-    
-            <!-- Chat Messages -->
-            <div class="chat_messages">
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Hello, I need help with camera recommendations.</p>
-                    <span class="timestamp">10:30 AM</span>
+        <h1>Curated List</h1>
+        <div class="item-container">
+
+            <!-- <div class="item-card">
+                <img src="path/to/image1.jpg" alt="item image" class="item-image">
+                <div class="item-details">
+                    <h3>Carved Statue</h3>
+                    <p class="price">20.00</p>
                 </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Can you share your budget?</p>
-                    <span class="timestamp">10:32 AM</span>
+                <div class="item-actions">
+                    <form action="" method="post">
+                        <input type="hidden" name="itemid" id="itemid">
+                        <button class="button book">Add to Cart</button>
+                        <button class="button delete"><span class="material-symbols-outlined">delete</span></button>
+                    </form>
                 </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>I want something that was designed by Artisans</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Heres a list of the products I found <a href="curatedlist_view.php">Show more</a> </p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Thank you</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-            </div>
-    
-            <!-- Chat Input -->
-            <form class="chat_input_form" id="chatForm">
-                <input type="text"    name="message" id="messageInput"  placeholder="Enter message..."    required />
-                <button type="submit">
-                    <span class="material-symbols-outlined">send</span>
-                </button>
-            </form>
+            </div> -->
+
+            <?php
+                display_custom_items($userid);
+            ?>
+
         </div>
+        
     </main>
 
     <!-- Page Footer -->

@@ -63,6 +63,9 @@
                 <li>
                     <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Conversations </a> 
                 </li>
+                <li>
+                    <a href="sourced_items.php"> <span class="material-symbols-outlined">cardiology</span> Sourced Items </a> 
+                </li>
                 <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
             </ul>
         </div>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with Shopper</title>
-    <link rel="stylesheet" href="../css/chat.css">
+    <title>Curated Items</title>
+    <link rel="stylesheet" href="../css/cart.css">
     <link rel="stylesheet" href="../css/inner_footer.css">
     <link rel="stylesheet" href="../css/inner_header.css">
     <link rel="shortcut icon" href="../images/favicon_io/favicon.ico" type="image/x-icon">
@@ -60,61 +60,60 @@
                 <li>
                     <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
                 </li>
-            
+                <li>
+                    <a href="cart_view.php"> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
+                </li>
             </ul>
         </div>
     </aside>
 
     <main>
-        <div class="chat_container">
-            <!-- Chat Header -->
-            <div class="chat_header">
-                <h3>Chat with Personal Shopper</h3>
-                <span class="material-symbols-outlined">close</span>
+        <div class="order-summary-container">
+            <!-- Order Info -->
+            <div class="order-info">
+                <span>Order number</span>
+                <input type="text" value="1527369" readonly class="order-number">
+                <button class="track-order-btn">Track order</button>
             </div>
-    
-            <!-- Chat Messages -->
-            <div class="chat_messages">
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Hello, I need help with camera recommendations.</p>
-                    <span class="timestamp">10:30 AM</span>
+        
+            <!-- Order Items -->
+            <div class="order-items">
+                <div class="order-item">
+                    <div class="item-details">
+                        <h4>Atlas Decaf</h4>
+                        <p>250g / Whole Beans</p>
+                    </div>
+                    <div class="item-quantity">x2</div>
+                    <div class="item-price">£23.90</div>
                 </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Can you share your budget?</p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>I want something that was designed by Artisans</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Heres a list of the products I found <a href="curatedlist_view.php">Show more</a> </p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Thank you</p>
-                    <span class="timestamp">10:30 AM</span>
+                <div class="order-item">
+                    <div class="item-details">
+                        <h4>Atlas Decaf</h4>
+                        <p>250g / Ground for Espresso (Fine)</p>
+                    </div>
+                    <div class="item-quantity">x1</div>
+                    <div class="item-price">£11.95</div>
                 </div>
             </div>
-    
-            <!-- Chat Input -->
-            <form class="chat_input_form" id="chatForm">
-                <input type="text"    name="message" id="messageInput"  placeholder="Enter message..."    required />
-                <button type="submit">
-                    <span class="material-symbols-outlined">send</span>
-                </button>
-            </form>
+        
+            <!-- Cost Breakdown -->
+            <div class="cost-breakdown">
+                <div class="cost-item">
+                    <span>Subtotal</span>
+                    <span>£35.85</span>
+                </div>
+                <div class="cost-item">
+                    <span>Delivery</span>
+                    <span>£5.95</span>
+                </div>
+            </div>
         </div>
+        
     </main>
 
-    <!-- Page Footer -->
-    <footer>
-        <p>&copy; 2024 NicheNest</p>
-    </footer>
+<!-- Page Footer -->
+<footer>
+    <p>&copy; 2024 NicheNest</p>
+</footer>
 </body>
 </html>

@@ -101,8 +101,9 @@
                     <p>Clothes</p>
                 </div>
                 <div class="btn"> 
-                    <button>Start Chat</button>
-                    <button>Place Order</button>
+                    <a href="personalshopping.html">
+                        <button>Start Chat</button>
+                    </a>
                 </div>
         </div>
         <div class="curatedlist_section">
@@ -117,8 +118,9 @@
                     <p>Clothes</p>
                 </div>
                 <div class="btn">
-                    <button>View List</button>
-                    <button>Place Order</button>
+                    <a href="curatedlist_view.html">
+                        <button>View List</button>
+                    </a>
                 </div>
         </div>
     </main>
