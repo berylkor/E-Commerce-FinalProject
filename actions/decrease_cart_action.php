@@ -1,6 +1,10 @@
 <?php
-    include('../controllers/cart_controller.php');
-    session_start();
+    include_once('../controllers/cart_controller.php');
+    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     if (isset($_GET['key']))
     {
         $productid = $_GET['key'];

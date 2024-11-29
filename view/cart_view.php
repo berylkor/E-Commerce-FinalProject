@@ -1,5 +1,6 @@
 <?php
 include_once("../functions/display_profile.php");
+include_once("../functions/display_cart.php");
 
 ?>
 
@@ -8,7 +9,7 @@ include_once("../functions/display_profile.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curated Items</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="../css/cart.css">
     <link rel="stylesheet" href="../css/inner_footer.css">
     <link rel="stylesheet" href="../css/inner_header.css">
@@ -35,8 +36,6 @@ include_once("../functions/display_profile.php");
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                <!-- <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p> -->
                 <?php
                     displayProfile();
                 ?>
@@ -77,44 +76,27 @@ include_once("../functions/display_profile.php");
             <!-- Left Section: Shopping Bag -->
             <div class="cart-items">
                 <h2>Shopping Bag</h2>
-
-                <div class="cart-item">
-                    <img src="../images/camera.jpg" alt="Floral Print Wrap Dress" class="item-image">
-                    <div class="item-details">
-                        <h4>Floral Print Wrap Dress</h4>
-                        <p class="item-meta">WOMEN</p>
-                        <p>Color: Blue | Size: 42</p>
-                    </div>
-                    <div class="item-price">$20.50</div>
-                    <div class="item-quantity">
-                        <button class="quantity-btn">-</button>
-                        <input type="number" min="1">
-                        <button class="quantity-btn">+</button>
-                    </div>
-                    <div class="item-total">$41.00</div>
-                </div>
+                <?php
+                    display_cart()
+                ?>
             </div>
         
             <!-- Right Section: Summary -->
             <div class="cart-summary">
                 <h2>Calculated Shipping</h2>
-                <div class="shipping-form">
-                    <select>
+                <form action="../actions/add_shipping_action.php" method="post" class="shipping-form" name="shipping-form">
+                    <select id="country" name="country">
                         <option value="" disabled selected>Country</option>
                         <option>Ghana</option>
                     </select>
-                    <input type="text" placeholder="City">
-                    <input type="text" placeholder="Street">
-                    <button class="button update">Update</button>
-                </div>
-                
-                <div class="cart-total">
-                    <h3>Cart Total</h3>
-                    <p>Cart Subtotal: <span>$71.50</span></p>
-                    <p>Delivery<span>$4.00</span></p>
-                    <h4>Total: <span>$67.50</span></h4>
-                    <button class="button checkout">Checkout</button>
-                </div>
+                    <input type="text" placeholder="City" id="city" name="city">
+                    <input type="text" placeholder="Street" id="street" name="street">
+                    <button type="submit" name="update" class="button update">Update</button>
+                </form>
+
+                <?php
+                    display_cart_total();
+                ?>
             </div>
         </div>
         
@@ -124,5 +106,9 @@ include_once("../functions/display_profile.php");
 <footer>
     <p>&copy; 2024 NicheNest</p>
 </footer>
+
 </body>
+
+<script src="../js/cart.js"></script>
+
 </html>

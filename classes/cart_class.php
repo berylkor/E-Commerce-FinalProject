@@ -38,14 +38,14 @@ class cart_class extends db_connection
     public function view_cart($customerid)
 	{
 		$ndb = new db_connection();	
-        $sql="SELECT * FROM `cart` WHERE `c_id`  = '$customerid'";
+        $sql="SELECT * FROM `cart` WHERE `customer_id`  = '$customerid'";
         return $ndb->db_fetch_all($sql);
 	}
 
     public function get_cart_product($productid)
     { 
 		$ndb = new db_connection();	
-        $sql = "SELECT * FROM  `products` WHERE `product_id` = '$productid'";
+        $sql = "SELECT * FROM  `sourced_items` WHERE `item_id` = '$productid'";
         return $ndb->db_fetch_one($sql);
 
     }
@@ -53,26 +53,26 @@ class cart_class extends db_connection
     public function delete_cart_item($productid, $customerid)
     {
 		$ndb = new db_connection();	
-		$sql = "DELETE FROM `cart` WHERE p_id = '$productid' AND `c_id` = '$customerid'";
+		$sql = "DELETE FROM `cart` WHERE `product_id` = '$productid' AND `customer_id` = '$customerid'";
 		return $ndb->db_query($sql);
     }
 
     public function decrease_cart($productid, $customerid)
     {
 		$ndb = new db_connection();	
-        $sql = "SELECT `qty` FROM `cart` WHERE `p_id` = '$productid' AND `c_id` = '$customerid'";
+        $sql = "SELECT `qty` FROM `cart` WHERE `product_id` = '$productid' AND `customer_id` = '$customerid'";
         $qty = $ndb->db_fetch_one($sql);
         $qty_one = $qty['qty'];
         if ($qty_one > 1)
         {
             $newqty = $qty['qty'] - 1;
     
-            $update = "UPDATE `cart` SET `qty` = '$newqty' WHERE `p_id` = '$productid' AND `c_id` = '$customerid'";
+            $update = "UPDATE `cart` SET `qty` = '$newqty' WHERE `product_id` = '$productid' AND `customer_id` = '$customerid'";
             return $ndb->db_query($update);
         }
         else
         {
-            $sql = "DELETE FROM `cart` WHERE p_id = '$productid' AND `c_id` = '$customerid'";
+            $sql = "DELETE FROM `cart` WHERE product_id = '$productid' AND `customer_id` = '$customerid'";
 		return $ndb->db_query($sql);
         }
 
@@ -81,15 +81,20 @@ class cart_class extends db_connection
     public function increase_cart($productid, $customerid)
     {
 		$ndb = new db_connection();	
-        $sql = "SELECT `qty` FROM `cart` WHERE `p_id` = '$productid' AND `c_id` = '$customerid'";
+        $sql = "SELECT `qty` FROM `cart` WHERE `product_id` = '$productid' AND `customer_id` = '$customerid'";
         $qty = $ndb->db_fetch_one($sql);
 
         $newqty = $qty['qty'] + 1;
-        $update = "UPDATE `cart` SET `qty` = '$newqty' WHERE `p_id` = '$productid' AND `c_id` = '$customerid'";
+        $update = "UPDATE `cart` SET `qty` = '$newqty' WHERE `product_id` = '$productid' AND `customer_id` = '$customerid'";
         return $ndb->db_query($update);
     }
 
-
+    public function get_cart_delivery($customerid)
+    {
+        $ndb = new db_connection();	
+        $sql = "SELECT `fee` FROM `shipping_fees` WHERE `customer_id` = '$customerid'";
+        return $ndb->db_fetch_one($sql);
+    }
 }
 
 ?>
