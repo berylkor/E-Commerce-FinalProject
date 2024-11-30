@@ -135,7 +135,8 @@ main
 }
 
 /* General styles for all sections */
-.rankinglist_section, .expertreviews_section, .shopperchat_section, .curatedlist_section {
+.rankinglist_section, .expertreviews_section, .shopperchat_section, .curatedlist_section 
+{
     background-color: #ffffff;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-1);
@@ -148,10 +149,10 @@ main
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.rankinglist_section:hover, .expertreviews_section:hover, 
-.shopperchat_section:hover, .curatedlist_section:hover {
-    transform: translateY(-0.3rem); /* Slight lift on hover */
-    box-shadow: var(--box-shadow-2); /* Stronger shadow on hover */
+.rankinglist_section:hover, .expertreviews_section:hover, .shopperchat_section:hover, .curatedlist_section:hover 
+{
+    transform: translateY(-0.3rem); 
+    box-shadow: var(--box-shadow); 
 }
 
 /* Top Section */

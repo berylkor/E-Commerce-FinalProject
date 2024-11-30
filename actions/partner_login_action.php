@@ -1,5 +1,5 @@
 <?php
-    include "../controllers/user_controller.php";
+    include_once("../controllers/user_controller.php");
     
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -12,14 +12,13 @@
         $user_pass = $_POST["ppassword"];
 
         // login function call
-        $login = get_user_ctr($user_email, $user_pass);
+        $login = get_employee_ctr($user_email, $user_pass);
                 
         if ($login)
         {
-            if ($_SESSION['role_id'] == 2)
+            if ($_SESSION['role_id'] == 3 or $_SESSION['role_id'] == 4)
             {
-                // redirect to the home page
-                header("Location:../view/welcome_view.php");
+                header("Location:../view/dashboard_view.php");
                 exit;
             }
             else
@@ -30,7 +29,7 @@
         else
         {
             // redirect back to the login page if there is an error
-            header("Location: ../view/login_view.php?invalid_credentials");
+            header("Location: ../view/partner_login.php?invalid_credentials");
             exit;
         }
     }

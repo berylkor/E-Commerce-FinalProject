@@ -41,6 +41,10 @@
                 </div>
                 <button type="button" class="role_btn" id="confirm_role_btn">Confirm</button>
             </form>
+            <p>
+                Already have an account?
+                <a href="../view/partner_login_view.php">Login Here</a>
+            </p>
         </section>
 
         <div class="main-container hidden" id="content"> 

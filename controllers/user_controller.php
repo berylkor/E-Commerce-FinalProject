@@ -16,15 +16,5 @@ function get_user_ctr($email, $ppassword)
 	return $getuser->login_user($email, $ppassword);
 }
 
-function add_expert_ctr($username, $email, $pnumber, $ppassword, $profession)
-{
-	$addexpert = new user_class();
-	return $addexpert->add_expert($username, $email, $pnumber, $ppassword, $profession);
-}
 
-function add_shopper_ctr($username, $email, $pnumber, $ppassword)
-{
-	$addexpert = new user_class();
-	return $addexpert->add_shopper($username, $email, $pnumber, $ppassword);
-}
 ?>

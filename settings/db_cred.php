@@ -3,6 +3,6 @@
 define("SERVER", "localhost");
 define("USERNAME", "root");
 define("PASSWORD", "");
-define("DATABASE", "niche_mgt");
+define("DATABASE", "niche_db_mgt");
 
 ?>

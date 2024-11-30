@@ -33,8 +33,6 @@
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                <!-- <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p> -->
                 <?php
                     displayProfile();
                 ?>
@@ -101,7 +99,7 @@
                     <p>Clothes</p>
                 </div>
                 <div class="btn"> 
-                    <a href="personalshopping.html">
+                    <a href="personalshopping.php">
                         <button>Start Chat</button>
                     </a>
                 </div>
@@ -118,7 +116,7 @@
                     <p>Clothes</p>
                 </div>
                 <div class="btn">
-                    <a href="curatedlist_view.html">
+                    <a href="curatedlist_view.php">
                         <button>View List</button>
                     </a>
                 </div>

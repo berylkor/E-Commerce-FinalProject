@@ -33,7 +33,7 @@
                 <!-- <p>Beryl Koram</p>
                 <p>beryl.koram@gmail.com</p> -->
                 <?php
-                    displayProfile();
+                    // displayProfile();
                 ?>
             </div>
             <a href="profile_view.php" style="text-decoration: none;">
@@ -70,6 +70,7 @@
             <!-- Chat Header -->
             <div class="chat_header">
                 <h3>Chat with Personal Shopper</h3>
+                <div> Customer: Beryl, Shopper: Baaba</div>
                 <span class="material-symbols-outlined">close</span>
             </div>
     
@@ -103,11 +104,9 @@
             </div>
     
             <!-- Chat Input -->
-            <form class="chat_input_form" id="chatForm">
-                <input type="text"    name="message" id="messageInput"  placeholder="Enter message..."    required />
-                <button type="submit">
-                    <span class="material-symbols-outlined">send</span>
-                </button>
+            <form action="../actions/add_conversation_action.php" method="post" class="chat_input_form" id="chatForm">
+                <input type="text" name="message" id="messageInput" placeholder="Enter message..." required />
+                <button type="submit"> <span class="material-symbols-outlined">send</span> </button>
             </form>
         </div>
     </main>
@@ -117,4 +116,5 @@
         <p>&copy; 2024 NicheNest</p>
     </footer>
 </body>
+<script src="../js/shopper.js"></script>
 </html>

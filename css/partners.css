@@ -112,6 +112,17 @@ footer
     background-color: #0056b3;
 }
 
+.role_selection a
+{
+    color: var(--color-brand-2);
+    text-decoration: none;
+}
+
+.role_selection a:hover
+{
+    text-decoration: underline;
+}
+
 .main-container
 {
     width: 100%;
