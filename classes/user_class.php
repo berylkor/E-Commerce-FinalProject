@@ -92,6 +92,18 @@ class user_class extends db_connection
         return $ndb->db_fetch_all($sql);
     }
 
+    public function edit_user_privilege($user_id, $privilege_id)
+    {
+        $ndb = new db_connection();
+        // Sanitize the inputs
+        $user_id = mysqli_real_escape_string($ndb->db_conn(), $user_id);
+        $privilege_id = mysqli_real_escape_string($ndb->db_conn(), $privilege_id);
+
+        // SQL query to update the user's privilege
+        $sql = "UPDATE `users` SET `privilege_id` = '$privilege_id' WHERE `user_id` = '$user_id'";
+        return $this->db_query($sql);
+    }
+
 }
 
 

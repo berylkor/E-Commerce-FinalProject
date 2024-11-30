@@ -58,6 +58,13 @@ class shopper_class extends db_connection
         $sql = "SELECT * FROM `users` WHERE `privilege_id` != 1";
         return $ndb->db_fetch_all($sql);
     }
+
+    public function get_a_shopper()
+    {
+        $ndb = new db_connection();	
+        $sql = "SELECT `shopper_id` FROM `personal_shopper` ORDER BY RAND() LIMIT 1";
+        return $ndb->db_fetch_one($sql);
+    }
 }
 
 ?>

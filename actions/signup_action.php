@@ -1,5 +1,5 @@
 <?php
-    include "../controllers/user_controller.php";
+    include_once("../controllers/user_controller.php");
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") 

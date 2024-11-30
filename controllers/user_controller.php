@@ -16,5 +16,12 @@ function get_user_ctr($email, $ppassword)
 	return $getuser->login_user($email, $ppassword);
 }
 
+// function to call edit privilege function from privilege class
+function edit_privilege_ctr($user_id, $privilege_id)
+{
+	$privilege = new user_class();
+	return $privilege->edit_user_privilege($user_id, $privilege_id);
+}
+
 
 ?>

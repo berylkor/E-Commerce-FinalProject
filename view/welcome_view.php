@@ -30,17 +30,18 @@
             </a>
         </div>
         <!-- User details -->
-        <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
-                <?php
-                    displayProfile();
-                ?>
+            <div class="user_container">
+                <span class="material-symbols-outlined">account_circle</span>
+                <div class="profile_details">
+                    <?php
+                        displayProfile();
+                    ?>
+                </div>
+                <a href="../view/profile_view.php" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                </a>
             </div>
-            <a href="profile_view.php" style="text-decoration: none;">
-                <span class="material-symbols-outlined">keyboard_arrow_down</span>
-            </a>
-        </div>
+
     </header>
 
     <!-- Sidebar section -->
