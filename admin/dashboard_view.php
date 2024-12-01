@@ -35,7 +35,7 @@ include_once("../functions/display_profile.php");
                     displayProfile();
                 ?>
             </div>
-            <a href="profile_view.php" style="text-decoration: none;">
+            <a href="../view/profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
         </div>

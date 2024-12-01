@@ -56,6 +56,13 @@ class shopper_class extends db_connection
         $sql = "SELECT `name` FROM `shopper` WHERE `shopper_id` = '$id'";
         return $ndb->db_fetch_one($sql);
     }
+
+    public function get_shopperinfo($id)
+    {
+        $ndb = new db_connection();	
+        $sql = "SELECT `shopper_id` FROM `shopper` WHERE `employee_id` = '$id'";
+        return $ndb->db_fetch_one($sql);
+    }
 }
 
 ?>

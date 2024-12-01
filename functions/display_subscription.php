@@ -11,6 +11,7 @@ function display_subscription($id)
     $privileges = $displayprivilege->get_a_privilege($id);
     foreach ($privileges as $privilege)
     {
+        $amount = (int)ceil($privilege['monthly_fee']);
         echo 
         "<div>
             <h4>Subscription type: <p>".$privilege['tier']."</p></h4>
@@ -21,7 +22,7 @@ function display_subscription($id)
                     <label for='email'>Email Address</label>
                     <input type='email' id='email-address' name='email-address' required/>
                 </div>
-                <input type='hidden' id='amount' name='amount' value='".$privilege['monthly_fee']."'/>
+                <input type='hidden' id='amount' name='amount' value='".$amount."'/>
                 
                 <button id='submit' name='submit' onsubmit='payWithPaystack()'>Pay</button>
             </form>

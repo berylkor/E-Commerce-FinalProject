@@ -30,6 +30,13 @@ class conversation_class extends db_connection
 
     }
 
+    public function get_conversation($customer, $shopper)
+    {
+        $ndb = new db_connection();
+        $sql = "SELECT * FROM `conversations` WHERE `customer_id` = '$customer' AND `shopper_id` = '$shopper' ORDER BY `sent_at` ASC";
+        return $ndb->db_fetch_all($sql);
+    }
+
 }
 
 ?>

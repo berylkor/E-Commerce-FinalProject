@@ -3,7 +3,7 @@ var paymentForm = document.getElementById('subscriptionform');
 paymentForm.addEventListener('submit', payWithPaystack, false);
 
 function payWithPaystack(e) {
-
+    console.log("Print Now");
     e.preventDefault();
     var handler = PaystackPop.setup({
         key: 'pk_test_cf8d10df59aeabab0c3c5ef221171690e4424cdc', // Replace with your public key

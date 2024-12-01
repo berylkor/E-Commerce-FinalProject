@@ -14,6 +14,7 @@ function get_assign_ctr($customer)
 	$getassign = new assign_class();
 	return $getassign->get_assignment_by_customer($customer);
 }
+
 function get_assigns_ctr($shopper)
 {
 	$getassign = new assign_class();

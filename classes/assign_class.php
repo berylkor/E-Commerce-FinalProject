@@ -31,8 +31,6 @@ class assign_class extends db_connection
     public function get_assignment_by_customer($customer)
     {
         $ndb = new db_connection();	
-        // sanitise the data from the form
-		$customer =  mysqli_real_escape_string($ndb->db_conn(), $customer);
 
         // sql select statement to check if the user exists
         $sql = "SELECT * FROM `assigned_customers` WHERE `customer_id` = '$customer'";
@@ -43,8 +41,6 @@ class assign_class extends db_connection
     public function get_assignment_by_shopper($shopper)
     {
         $ndb = new db_connection();	
-        // sanitise the data from the form
-		$shopper =  mysqli_real_escape_string($ndb->db_conn(), $shopper);
 
         // sql select statement to check if the user exists
         $sql = "SELECT * FROM `assigned_customers` WHERE `shopper_id` = '$shopper'";

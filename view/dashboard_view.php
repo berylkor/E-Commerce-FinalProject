@@ -64,7 +64,7 @@
                     <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Personal </a> 
                 </li>
                 <li>
-                    <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Conversations </a> 
+                    <a href="conversations_view.php"> <span class="material-symbols-outlined">cardiology</span> Conversations </a> 
                 </li>
                 <li>
                     <a href="sourced_items.php"> <span class="material-symbols-outlined">cardiology</span> Sourced Items </a> 

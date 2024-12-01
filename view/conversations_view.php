@@ -1,5 +1,6 @@
 <?php
 include_once("../functions/display_profile.php");
+include_once("../controllers/shopper_controller.php");
 include_once("../controllers/assign_controller.php");
 include_once("../actions/add_conversation_action.php");
 include_once("../functions/display_customername.php");
@@ -7,10 +8,15 @@ include_once("../functions/display_customername.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+// store the shopper's employee id
 $id = $_SESSION['user_id'];
-$assigns = get_assigns_ctr($id);
+// retrieve their shopper id using the employee id
+$shopper = get_shopperinfo_ctr($id);
+$sid = $shopper['shopper_id'];
+// call function to get the details from the assigned table
+$assigns = get_assigns_ctr($sid);
+// store the shopper's assigned customer id
 $customer = $assigns['customer_id'];
-
 ?>
 
 <!DOCTYPE html>
@@ -80,44 +86,22 @@ $customer = $assigns['customer_id'];
         <div class="chat_container">
             <!-- Chat Header -->
             <div class="chat_header">
-                <!-- <h3>Chat with Personal Shopper</h3> -->
-                 <?php displayCustomername($customer); ?>
+                <?php 
+                    displayCustomername($customer); 
+                ?>
                 <span class="material-symbols-outlined">close</span>
             </div>
     
             <!-- Chat Messages -->
             <div class="chat_messages">
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Hello, I need help with camera recommendations.</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Can you share your budget?</p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>I want something that was designed by Artisans</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Heres a list of the products I found <a href="curatedlist_view.php">Show more</a> </p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Thank you</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
+                
             </div>
     
             <!-- Chat Input -->
             <form action="../actions/add_shopper_conversation_action.php" method="post" class="chat_input_form" id="chatForm">
                 <input type="text" name="message" id="messageInput" placeholder="Enter message..." required />
-                <input type="hidden" name="sid" id="sid" value="<?php echo $customer; ?>" />
+                <input type="hidden" name="sid" id="sid" value="<?php echo $sid; ?>" />
+                <input type="hidden" name="cid" id="cid" value="<?php echo $customer; ?>" />
                 <button type="submit"> <span class="material-symbols-outlined">send</span> </button>
             </form>
         </div>
@@ -129,4 +113,63 @@ $customer = $assigns['customer_id'];
     </footer>
 </body>
 <script src="../js/shopper.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    // Function to load messages
+    function loadMessages(customer_id, shopper_id) {
+        $.ajax({
+            url: "../actions/get_conversation_action.php", // Backend handler
+            type: "POST",
+            data: {
+                customer_id: customer_id,
+                shopper_id: shopper_id,
+            },
+            success: function (response) {
+                try {
+                    // Directly log the raw response to ensure it matches your expectations
+                    console.log("Raw response:", response);
+
+                    // Check if the response is already a parsed JSON object (array of objects)
+                    let data = Array.isArray(response) ? response : JSON.parse(response);
+
+                    console.log("Parsed data:", data); // Verify the parsed data
+
+                    // Clear the chat messages container
+                    const chatContainer = $(".chat_messages");
+                    chatContainer.empty();
+
+                    // Dynamically append each message to the chat container
+                    data.forEach((message) => {
+                        const messageHtml = `
+                            <div class="chat_message ${message.sender.toLowerCase()}">
+                                <h5>${message.sender === 'Customer' ? 'Customer' : 'Shopper'}</h5>
+                                <p>${message.message}</p>
+                                <span class="timestamp">${message.sent_at}</span>
+                            </div>`;
+                        chatContainer.append(messageHtml);
+                    });
+                } 
+                catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+            error: function () {
+                alert("Failed to load messages. Please try again.");
+            },
+        });
+    }
+
+    // Automatically load messages every 5 seconds
+    const customer_id = $("#cid").val();
+    const shopper_id = $("#sid").val();
+
+    setInterval(() => {
+        loadMessages(customer_id, shopper_id);
+    }, 5000);
+
+    // Initial load
+    loadMessages(customer_id, shopper_id);
+</script>
+
 </html>

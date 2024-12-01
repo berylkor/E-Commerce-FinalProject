@@ -8,8 +8,8 @@
     {
         // user details for sign up user
         $message = $_POST["message"];
-        $customer = $_SESSION["user_id"];
         $shopper = $_POST["sid"];
+        $customer = $_POST["cid"];
 
         // call function from controller to add the conversation
         $add = add_convo_ctr($customer, $shopper, $message, 'shopper');
@@ -17,12 +17,12 @@
         if ($add)
         {
             // redirect if successful
-            header("Location: ../view/personalshopping.php");
+            header("Location: ../view/conversations_view.php");
         }
         else 
         {
             // redirect back
-            header("Location: ../view/personalshopping.php?failed");
+            header("Location: ../view/conversations_view.php?failed");
         }
     }       
     

@@ -14,8 +14,8 @@
         $employee = add_employee_ctr($user_name, $user_email, $user_pass, '4');
         if ($employee)
         {
-            // call function from controller to add the employee table
-            $add = add_shopper_ctr($user_name, $user_number,2,$employee);
+            // call function from controller to add the shopper table
+            $add = add_shopper_ctr($user_name, $user_number, 2, $employee);
             if ($add)
             {
                 // redirect if successful

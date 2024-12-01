@@ -96,7 +96,7 @@ class user_class extends db_connection
     {
         $ndb = new db_connection();	
         $sql = "SELECT * FROM users WHERE `user_id` = '$id'";
-        return $ndb->db_fetch_all($sql);
+        return $ndb->db_fetch_one($sql);
     }
 
     public function edit_user_privilege($user_id, $privilege_id)

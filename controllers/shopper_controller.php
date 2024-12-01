@@ -15,4 +15,10 @@ function get_a_shopper_ctr()
 	return $getshopper->get_a_shopper();
 }
 
+function get_shopperinfo_ctr($id)
+{
+	$getshopper = new shopper_class();
+	return $getshopper->get_shopperinfo($id);
+}
+
 ?>

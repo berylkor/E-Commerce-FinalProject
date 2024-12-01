@@ -7,8 +7,11 @@ include_once("../functions/display_shoppername.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+// retrieve the user id for the customer
 $id = $_SESSION['user_id'];
+// find the assigned personal shopper based on the user id
 $assigns = get_assign_ctr($id);
+// store the shoppers id
 $shopper = $assigns['shopper_id'];
 
 ?>
@@ -33,19 +36,18 @@ $shopper = $assigns['shopper_id'];
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
-            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
-            <a href="">    <button class="header_btn"> Shopping </button></a>
-            <a href="logout.php">
+            <a href="../view/about_view.php"> <button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"> <button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.html">  <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php">  <button class="header_btn"> Shopping </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
-                
+            <div class="profile_details">   
                 <?php
                     displayProfile();
                 ?>
@@ -57,7 +59,7 @@ $shopper = $assigns['shopper_id'];
     </header>
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
+            <img src="" alt="" width="120px" height="120px">
             <p>Ad Space</p>
             <a href="#">Learn More</a> 
         </div>
@@ -69,12 +71,14 @@ $shopper = $assigns['shopper_id'];
             </div>
             <ul>
                 <li> 
-                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> Chat </a> 
+                    <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">flight</span> Chat </a> 
                 </li>
                 <li>
-                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
+                    <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
                 </li>
-            
+                <li>
+                    <a href="../view/cart_view.php"> <span class="material-symbols-outlined">nightlife</span> cart </a> 
+                </li>
             </ul>
         </div>
     </aside>
@@ -83,43 +87,20 @@ $shopper = $assigns['shopper_id'];
         <div class="chat_container">
             <!-- Chat Header -->
             <div class="chat_header">
-                <!-- <h3>Chat with Personal Shopper</h3> -->
+                <!-- display the shopper's name -->
                  <?php displayShoppername($shopper); ?>
                 <span class="material-symbols-outlined">close</span>
             </div>
     
             <!-- Chat Messages -->
             <div class="chat_messages">
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Hello, I need help with camera recommendations.</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Can you share your budget?</p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>I want something that was designed by Artisans</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
-                <div class="chat_message shopper">
-                    <h5> Jane - Shopper </h5>
-                    <p>Sure! Heres a list of the products I found <a href="curatedlist_view.php">Show more</a> </p>
-                    <span class="timestamp">10:32 AM</span>
-                </div>
-                <div class="chat_message customer">
-                    <h5> John - Customer </h5>
-                    <p>Thank you</p>
-                    <span class="timestamp">10:30 AM</span>
-                </div>
+                
             </div>
     
             <!-- Chat Input -->
             <form action="../actions/add_conversation_action.php" method="post" class="chat_input_form" id="chatForm">
                 <input type="text" name="message" id="messageInput" placeholder="Enter message..." required />
+                <input type="hidden" name="id" id="id" value="<?php echo $id; ?>" />
                 <input type="hidden" name="sid" id="sid" value="<?php echo $shopper; ?>" />
                 <button type="submit"> <span class="material-symbols-outlined">send</span> </button>
             </form>
@@ -132,4 +113,60 @@ $shopper = $assigns['shopper_id'];
     </footer>
 </body>
 <script src="../js/shopper.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Function to load messages
+    function loadMessages(customer_id, shopper_id) {
+        $.ajax({
+            url: "../actions/get_conversation_action.php",
+            type: "POST",
+            data: {
+                customer_id: customer_id,
+                shopper_id: shopper_id,
+            },
+            success: function (response) {
+                try {
+                    console.log("Raw response:", response);
+
+                    // Parse response safely
+                    let data = Array.isArray(response) ? response : JSON.parse(response);
+                    console.log("Parsed data:", data);
+
+                    // Clear the chat messages container
+                    const chatContainer = $(".chat_messages");
+                    chatContainer.empty();
+
+                    // Dynamically append each message to the chat container
+                    data.forEach((message) => {
+                        console.log("Rendering message:", message);
+                        const messageHtml = `
+                            <div class="chat_message ${message.sender.toLowerCase()}">
+                                <h5>${message.sender === 'Customer' ? 'Customer' : 'Shopper'}</h5>
+                                <p>${message.message}</p>
+                                <span class="timestamp">${message.sent_at}</span>
+                            </div>`;
+                        chatContainer.append(messageHtml);
+                    });
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+            error: function () {
+                alert("Failed to load messages. Please try again.");
+            },
+        });
+    }
+
+    // Automatically load messages every 10 seconds
+    const customer_id = $("#id").val();
+    const shopper_id = $("#sid").val();
+
+    setInterval(() => {
+        loadMessages(customer_id, shopper_id);
+    }, 10000);
+
+    // Initial load
+    loadMessages(customer_id, shopper_id);
+</script>
+
 </html>
