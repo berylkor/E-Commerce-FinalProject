@@ -25,7 +25,7 @@ class conversation_class extends db_connection
 		$sender =  mysqli_real_escape_string($ndb->db_conn(), $sender);
 
         // sql select statement to check if the user exists
-        $sql = "INSERT INTO `conversations` (`customer_id`, `shopper_id`, `message`, `theme`) VALUES ('$customer', '$shopper', '$message', '$sender')";
+        $sql = "INSERT INTO `conversations` (`customer_id`, `shopper_id`, `message`, `sender`) VALUES ('$customer', '$shopper', '$message', '$sender')";
         return $this->db_query($sql);    
 
     }

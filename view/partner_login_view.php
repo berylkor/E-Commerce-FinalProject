@@ -56,7 +56,7 @@
                     <!-- Link to the sign up page -->
                     <p>
                         Don't have an account? 
-                        <a href="signup_view.php">Sign up here</a>
+                        <a href="partners_view.php">Sign up here</a>
                     </p>
         
                 </form>

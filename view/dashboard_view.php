@@ -21,6 +21,9 @@
         <div class="btn_container">
             <a href="about.html"><button class="header_btn"> About Us</button></a>
             <a href="dashboard.html"><button class="header_btn"> Home </button></a>
+            <a href="logout.php">
+                <button class="header_btn"> Logout </button>
+            </a>
         </div>
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
@@ -66,7 +69,6 @@
                 <li>
                     <a href="sourced_items.php"> <span class="material-symbols-outlined">cardiology</span> Sourced Items </a> 
                 </li>
-                <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
             </ul>
         </div>
     </aside>

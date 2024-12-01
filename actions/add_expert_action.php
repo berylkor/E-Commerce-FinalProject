@@ -1,6 +1,6 @@
 <?php
-    include "../controllers/expert_controller.php";
-
+    include_once("../controllers/expert_controller.php");
+    include_once("../controllers/employee_controller.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
@@ -11,20 +11,29 @@
         $user_pass = $_POST["ppassword"];
         $user_profession = $_POST["profession"];
 
-        // call function from controller to add the users
-        $add = add_expert_ctr($user_name, $user_email, $user_number, $user_pass, $user_profession);
-
-        if ($add)
-        {
-            // redirect if successful
-            header("Location: ../view/login_view.php");
-        }
-        else 
+        $employee = add_employee_ctr($user_name, $user_email, $user_pass, '3');
+        if ($employee)
         {
 
-            // redirect back to the login if it does not work
-            header("Location: ../view/partners_view.php?signup_unsuccessful");
+            // call function from controller to add employee to the expert reviewer table
+            $add = add_expert_ctr($user_name, $user_number, $user_profession, $employee);
+            if ($add)
+            {
+                // redirect if successful
+                header("Location: ../view/partner_login_view.php");
+            }
+            else 
+            {   
+                // redirect back to the signup
+                header("Location: ../view/partners_view.php?reviewer_failed");
+            }
         }
+        else
+        {
+            // redirect back to the signup
+            header("Location: ../view/partners_view.php?employee_failed");
+        }
+
     }       
     
 ?>

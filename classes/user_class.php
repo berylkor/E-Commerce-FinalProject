@@ -54,7 +54,7 @@ class user_class extends db_connection
 		$ppassword =  mysqli_real_escape_string($ndb->db_conn(), $ppassword);
 
         // sql select statement to compare user credentials
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $sql = "SELECT * FROM `users` WHERE `email` = '$email'";
         $result = $ndb->db_fetch_all($sql);
 
         foreach($result as $row)
@@ -89,6 +89,13 @@ class user_class extends db_connection
     {
         $ndb = new db_connection();	
         $sql = "SELECT * FROM users WHERE role_id = '2'";
+        return $ndb->db_fetch_all($sql);
+    }
+
+    public function get_customer($id)
+    {
+        $ndb = new db_connection();	
+        $sql = "SELECT * FROM users WHERE `user_id` = '$id'";
         return $ndb->db_fetch_all($sql);
     }
 

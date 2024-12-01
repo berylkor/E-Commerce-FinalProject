@@ -2,14 +2,14 @@
 include_once("../functions/display_profile.php");
 include_once("../controllers/assign_controller.php");
 include_once("../actions/add_conversation_action.php");
-include_once("../functions/display_shoppername.php");
+include_once("../functions/display_customername.php");
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $id = $_SESSION['user_id'];
-$assigns = get_assign_ctr($id);
-$shopper = $assigns['shopper_id'];
+$assigns = get_assigns_ctr($id);
+$customer = $assigns['customer_id'];
 
 ?>
 
@@ -18,7 +18,7 @@ $shopper = $assigns['shopper_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with Shopper</title>
+    <title>Chat with Customer</title>
     <link rel="stylesheet" href="../css/chat.css">
     <link rel="stylesheet" href="../css/inner_footer.css">
     <link rel="stylesheet" href="../css/inner_header.css">
@@ -34,9 +34,7 @@ $shopper = $assigns['shopper_id'];
         <!-- Buttons to other pages -->
         <div class="btn_container">
             <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
-            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
-            <a href="">    <button class="header_btn"> Shopping </button></a>
+            <a href="dashboard_view.php"><button class="header_btn"> Home </button></a>
             <a href="logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
@@ -45,7 +43,6 @@ $shopper = $assigns['shopper_id'];
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
             <div class="profile_details">
-                
                 <?php
                     displayProfile();
                 ?>
@@ -84,7 +81,7 @@ $shopper = $assigns['shopper_id'];
             <!-- Chat Header -->
             <div class="chat_header">
                 <!-- <h3>Chat with Personal Shopper</h3> -->
-                 <?php displayShoppername($shopper); ?>
+                 <?php displayCustomername($customer); ?>
                 <span class="material-symbols-outlined">close</span>
             </div>
     
@@ -118,9 +115,9 @@ $shopper = $assigns['shopper_id'];
             </div>
     
             <!-- Chat Input -->
-            <form action="../actions/add_conversation_action.php" method="post" class="chat_input_form" id="chatForm">
+            <form action="../actions/add_shopper_conversation_action.php" method="post" class="chat_input_form" id="chatForm">
                 <input type="text" name="message" id="messageInput" placeholder="Enter message..." required />
-                <input type="hidden" name="sid" id="sid" value="<?php echo $shopper; ?>" />
+                <input type="hidden" name="sid" id="sid" value="<?php echo $customer; ?>" />
                 <button type="submit"> <span class="material-symbols-outlined">send</span> </button>
             </form>
         </div>

@@ -15,10 +15,10 @@
     <header>
         <h2 id="nichelogo">NicheNest</h2>
         <div class="btn_container">
-            <a href="about.html">
+            <a href="about_view.php">
                 <button class="header_btn"> About Us</button>
             </a>
-            <a href="index.html">
+            <a href="index.php">
                 <button class="header_btn"> Home </button>
             </a>
         </div>

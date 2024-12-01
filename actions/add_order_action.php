@@ -8,7 +8,7 @@
         $customer_id = $_SESSION['user_id'];
         $invoice = rand(100000,999999);
         $order_date = date('Y-m-d');
-        $subtotal = $_POST['subtotal']
+        $subtotal = $_POST['subtotal'];
         $cart_items = view_cart_ctr($customer_id);
         $addition = add_order_ctr($customer_id, $invoice, $order_date, 'pending');
 

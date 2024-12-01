@@ -1,5 +1,5 @@
 <?php
-    include_once("../controllers/user_controller.php");
+    include_once("../controllers/employee_controller.php");
     
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -16,20 +16,13 @@
                 
         if ($login)
         {
-            if ($_SESSION['role_id'] == 3 or $_SESSION['role_id'] == 4)
-            {
                 header("Location:../view/dashboard_view.php");
                 exit;
-            }
-            else
-            {
-                header("Location:../admin/dashboard_view.php");
-            }
         }
         else
         {
             // redirect back to the login page if there is an error
-            header("Location: ../view/partner_login.php?invalid_credentials");
+            header("Location: ../view/partner_login_view.php?invalid_credentials");
             exit;
         }
     }

@@ -12,7 +12,7 @@
         $shopper = $_POST["sid"];
 
         // call function from controller to add the conversation
-        $add = add_convo_ctr($customer, $shopper, $message, 'customer');
+        $add = add_convo_ctr($customer, $shopper, $message, 'shopper');
 
         if ($add)
         {

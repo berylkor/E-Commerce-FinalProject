@@ -21,9 +21,6 @@
             <a href="index.html">
                 <button class="header_btn"> Home </button>
             </a>
-            <a href="logout.php">
-                <button class="header_btn"> Logout </button>
-            </a>
         </div>
     </header>
 
