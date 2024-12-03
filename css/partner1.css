@@ -133,26 +133,13 @@ aside
     color: var(--color-brand-2);
 }
 
-#logout a 
+main 
 {
-    color: #000; 
-}
-
-#logout:hover a 
-{
-    color: #ff4d4d;
-}
-
-#logout:hover a span 
-{
-    color: #ff4d4d;
-}
-
-main {
     grid-area: main;
     padding: var(--padding-large);
     background: var(--color-background);
     color: var(--color-text);
+    overflow-y: auto;
 }
 
 .intro 

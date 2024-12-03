@@ -265,10 +265,11 @@ main
 
 .item-quantity input 
 {
-    width: 2.5rem;
+    width: 5rem;
     height: 2.5rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    text-align: center;
     margin: 0 0.3rem;
     border: 1px solid #ddd;
     border-radius: var(--border-radius-1);

@@ -36,22 +36,19 @@ $shopper = $assigns['shopper_id'];
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="../view/about_view.php"> <button class="header_btn"> About Us</button></a>
-            <a href="../view/welcome_view.php"> <button class="header_btn"> Home </button></a>
-            <a href="../view/productreviews.html">  <button class="header_btn"> Rankings </button></a>
-            <a href="../view/personalshopping.php">  <button class="header_btn"> Shopping </button></a>
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php"> <button class="header_btn"> Shopping </button></a>
             <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
-        <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">   
+        <div class="user_container">   
                 <?php
                     displayProfile();
                 ?>
-            </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
@@ -60,7 +57,7 @@ $shopper = $assigns['shopper_id'];
     <aside class="menu_container">
         <div class="container">
             <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
-            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a> 
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
         <div class="menu_content">
@@ -70,13 +67,13 @@ $shopper = $assigns['shopper_id'];
             </div>
             <ul>
                 <li> 
-                    <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">flight</span> Chat </a> 
+                    <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">chat</span> Chat </a> 
                 </li>
                 <li>
-                    <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
+                    <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">list_alt</span> List </a> 
                 </li>
                 <li>
-                    <a href="../view/cart_view.php"> <span class="material-symbols-outlined">nightlife</span> cart </a> 
+                    <a href="../view/cart_view.php"> <span class="material-symbols-outlined">shopping_cart</span> cart </a> 
                 </li>
             </ul>
         </div>

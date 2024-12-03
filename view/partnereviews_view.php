@@ -1,5 +1,5 @@
 <?php
-    include_once("../functions/display_profile.php");
+    include_once("../functions/display_employeeprofile.php");
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +23,10 @@
             <a href="../view/dashboard_view.php"><button class="header_btn"> Home </button></a>
         </div>
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
                 <?php
-                    displayProfile();
+                    displayEmployeeProfile();
                 ?>
-            </div>
-            <a href="profile_view.php" style="text-decoration: none;">
+            <a href="../view/employe_profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
         </div>
@@ -39,7 +36,7 @@
     <aside class="menu_container">
         <div class="container">
             <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
-            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a>  
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a>  
         </div>
         <hr>
         <div class="menu_content">
@@ -49,15 +46,15 @@
             </div>
             <ul>
                 <li> 
-                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> New Review </a> 
+                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">rate_review</span> New Review </a> 
                 </li>
                 <li>
-                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
+                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">history</span> Past Reviews </a> 
                 </li>
                 <li>
-                    <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Personal </a> 
+                    <a href="../view/conversations_view.php"> <span class="material-symbols-outlined">chat</span> Conversations </a> 
                 </li>
-                
+            </ul>
         </div>
     </aside>
 

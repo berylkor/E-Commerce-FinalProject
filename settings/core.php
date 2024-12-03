@@ -24,10 +24,10 @@ function get_userid()
 //function to check for level (admin, customer, expert, personal shopper)
 function check_role()
 {
-    if (isset($_SESSION['user_level']))
+    if (isset($_SESSION['role_id']))
     {
-        $user_level = $_SESSION['user_level'];
-        return $user_level;
+        $role_id = $_SESSION['role_id'];
+        return $role_id;
     }
 }
 

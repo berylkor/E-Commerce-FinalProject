@@ -2,7 +2,7 @@
 
 :root {
     --color-linear: linear-gradient(var(--color-brand-4), var(--color-brand-3), var(--color-brand-4), var(--color-brand-3));
-    --color-text: #000000;
+    --color-text: #333 !important;
     --color-text-1: #ffffff;
     --color-brand-2: #4b79ff;
     --color-brand-3: #6A5ACD;
@@ -85,7 +85,7 @@ hr
     font-size: 1.5rem;
     font-weight: 500;
     margin: 0;
-    color: #000000; 
+    color: var(--color-text); 
 }
 
 .menu_header .material-symbols-outlined 
@@ -118,48 +118,31 @@ hr
     transform: translateX(5px);
 }
 
-.menu_content li:hover a 
+.menu_content li:hover p
 {
     color: #fff;
 }
 
-.menu_content li:hover a span 
+.menu_content li:hover p span 
 {
     color: #fff; 
 }
 
-.menu_content li a 
+.menu_content li p 
 {
     text-decoration: none;
-    color: #000;
+    color: var(--color-text);
     font-size: 1rem;
     display: flex;
     align-items: center;
 }
 
-.menu_content li a span 
+.menu_content li p span 
 {
     margin-right: 0.8rem;
     font-size: 1.2rem;
     color: var(--color-brand-2);
 }
-
-#logout a 
-{
-    color: #000; 
-}
-
-#logout:hover a 
-{
-    color: #ff4d4d;
-}
-
-#logout:hover a span 
-{
-    color: #ff4d4d;
-}
-
-
 
 main
 {

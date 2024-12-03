@@ -1,11 +1,11 @@
 <?php
-include_once("../classes/user_class.php");
+include_once("../classes/employee_class.php");
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-function displayProfile()
+function displayEmployeeProfile()
 {
   // get user details from session
     $name = $_SESSION['user_name'];
@@ -13,13 +13,13 @@ function displayProfile()
 
     $id = $_SESSION['user_id'];
    // initialise a new instance of the user class
-    $displaycustomer = new user_class();
+    $displayemployee = new employee_class();
     // use function to get additional details 
-    $customer = $displaycustomer->get_customer($id);
-    if (!empty($customer['image']))
+    $employee = $displayemployee->get_employeedetails($id);
+    if (!empty($employee['image']))
     {
                     
-        echo "<img src='".$customer['image']."' width='30px' style='border-radius:20rem';>
+        echo "<img src='".$employee['image']."' width='30px' style='border-radius:20rem';>
               <div class='profile_details'>
                 <p>".$name."</p>
                 <p>".$email."</p>

@@ -2,7 +2,7 @@
 
 :root {
     --color-linear: linear-gradient(var(--color-brand-4), var(--color-brand-3), var(--color-brand-4), var(--color-brand-3));
-    --color-text: #000000;
+    --color-text: #333 !important;
     --color-text-1: #ffffff;
     --color-brand-2: #4b79ff;
     --color-brand-3: #6A5ACD;
@@ -156,34 +156,39 @@ main
 }
 
 /* Top Section */
-.top {
+.top 
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--padding-small);
     color: var(--color-text-3);
-    font-size: var(--fontsize-smedium);
+    font-size: var(--fontsize-medium);
 }
 
-.top p {
+.top p 
+{
     margin: 0;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined 
+{
     font-size: var(--fontsize-large);
     color: var(--color-brand-2);
 }
 
 /* Heading Styles */
-h2 {
-    font-size: var(--fontsize-medium);
+h2 
+{
+    font-size: var(--fontsize-smedium);
     font-weight: bold;
     margin: var(--padding-small) 0;
-    color: var(--color-text-1);
+    color: var(--color-text);
 }
 
 /* Tag Section */
-.tag {
+.tag 
+{
     display: flex;
     justify-content: center;
     gap: var(--padding-small);
@@ -191,7 +196,8 @@ h2 {
     margin: var(--padding-small) 0;
 }
 
-.tag p {
+.tag p 
+{
     background-color: var(--color-brand-2);
     color: #ffffff;
     border-radius: var(--border-radius);
@@ -214,7 +220,8 @@ a button, .btn button
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-a button:hover, .btn button:hover {
+a button:hover, .btn button:hover 
+{
     background-color: var(--color-brand-4);
     transform: scale(1.05); 
 }

@@ -1,5 +1,5 @@
 <?php
-include_once("../functions/display_profile.php");
+include_once("../functions/display_employeeprofile.php");
 include_once("../controllers/shopper_controller.php");
 include_once("../controllers/assign_controller.php");
 include_once("../actions/add_conversation_action.php");
@@ -39,30 +39,26 @@ $customer = $assigns['customer_id'];
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="dashboard_view.php"><button class="header_btn"> Home </button></a>
-            <a href="logout.php">
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/dashboard_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
                 <?php
-                    displayProfile();
+                    displayEmployeeProfile();
                 ?>
-            </div>
-            <a href="profile_view.php" style="text-decoration: none;">
+            <a href="../view/employee_profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
         </div>
     </header>
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
         <div class="menu_content">
@@ -72,12 +68,14 @@ $customer = $assigns['customer_id'];
             </div>
             <ul>
                 <li> 
-                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> Chat </a> 
+                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">rate_review</span> New Review </a> 
                 </li>
                 <li>
-                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
+                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">history</span> Past Reviews </a> 
                 </li>
-            
+                <li>
+                    <a href="../view/conversations_view.php"> <span class="material-symbols-outlined">chat</span> Conversations </a> 
+                </li>
             </ul>
         </div>
     </aside>

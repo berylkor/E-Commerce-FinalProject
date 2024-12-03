@@ -1,6 +1,10 @@
 <?php
+    include_once("../functions/display_customerdetails.php");
     include_once("../functions/display_profile.php");
     include_once("../functions/display_privileges.php");
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,22 +26,21 @@
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
-            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
-            <a href="">    <button class="header_btn"> Shopping </button></a>
-            <a href="logout.php">
+        <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php"> <button class="header_btn"> Shopping </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
             <div class="user_container">
-                <span class="material-symbols-outlined">account_circle</span>
-                <div class="profile_details">
+                
                     <?php
                         displayProfile();
                     ?>
-                </div>
+                
                 <a href="../view/profile_view.php" style="text-decoration: none;">
                     <span class="material-symbols-outlined">keyboard_arrow_down</span>
                 </a>
@@ -48,49 +51,19 @@
     <!-- Sidebar section -->
     <aside class="menu_container">
         <div class="container">
-            <img src="" alt="ads" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
     </aside>
 
     <main>
-        <!-- Profile Image -->
-        <form action="../view/subscription_view.php" method="post" name="profileform" id="profileform" enctype="">
-            <div>
-                <h3>Profile Image</h3>
-                <img src="" id="profileimage" name="profileimage" alt="profile image">
-            </div>
-            <!-- User's name -->
-            <div>
-                 <h3> Name</h3>
-                 <input type="text" id="username" name="username" value="Beryl Koram">
-            </div>
-            <!-- User's email -->
-            <div>
-                <h3> Email</h3>
-                <input type="text" id="useremail" name="useremail" value="berylkoram378@gmail.com">
-            </div>
-            <!-- User's phone number -->
-            <div>
-                <h3> Phone Number</h3>
-                <input type="text" id="username" name="username" value="0506204139">
-            </div>
-            <!-- User's password -->
-            <h3>Password</h3>
-            <input type="password" id="userpass" name="userpass" value="1234456">
-            
-            <input type="hidden" id="image" name="image" value="" accept="image/*">
-            <!-- Submission button -->
-            <button type="submit">Change Details</button>
-        </form>
+        <!-- Display the customer's details and allow them to make changes -->
+            <?php
+                displayCustomerdetails();
+            ?>
 
-        <div class="other_container">
-            <!-- displaying current theme -->
-            <div class="theme_container">
-                <h3>Your chosen theme: Media</h3>
-            </div>
+        <div class="other_container">           
             
             <!-- privilege level table -->
             <div class="shopperlevel_container">
@@ -110,5 +83,5 @@
         <p>&copy; 2024 NicheNest</p>
     </footer>
 </body>
-
+<script src="../js/profile.js"></script>
 </html>

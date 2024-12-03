@@ -1,5 +1,5 @@
 <?php
-    include_once("../functions/display_profile.php");
+    include_once("../functions/display_employeeprofile.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,22 +19,17 @@
     <header>
         <h2 id="nichelogo">NicheNest</h2>
         <div class="btn_container">
-            <a href="about.html"><button class="header_btn"> About Us</button></a>
-            <a href="dashboard.html"><button class="header_btn"> Home </button></a>
-            <a href="logout.php">
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/dashboard_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
-                <!-- <p>Beryl Koram</p>
-                <p>beryl.koram@gmail.com</p> -->
                 <?php
-                    displayProfile();
+                    displayEmployeeProfile();
                 ?>
-            </div>
-            <a href="profile_view.php" style="text-decoration: none;">
+            <a href="../view/employee_profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
         </div>
@@ -43,9 +38,8 @@
     <!-- Ad Space -->
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
         <div class="menu_content">
@@ -55,19 +49,13 @@
             </div>
             <ul>
                 <li> 
-                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> New Review </a> 
+                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">rate_review</span> New Review </a> 
                 </li>
                 <li>
-                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
+                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">history</span> Past Reviews </a> 
                 </li>
                 <li>
-                    <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Personal </a> 
-                </li>
-                <li>
-                    <a href="conversations_view.php"> <span class="material-symbols-outlined">cardiology</span> Conversations </a> 
-                </li>
-                <li>
-                    <a href="sourced_items.php"> <span class="material-symbols-outlined">cardiology</span> Sourced Items </a> 
+                    <a href="../view/conversations_view.php"> <span class="material-symbols-outlined">chat</span> Conversations </a> 
                 </li>
             </ul>
         </div>
@@ -85,14 +73,14 @@
                 <p>
                     Share your expertise by reviewing niche products. Help users make informed decisions with your valuable insights.
                 </p>
-                <a href="partnereviews_view.php" class="cta_btn">Start a Review</a>
+                <a href="../view/partnereviews_view.php" class="cta_btn">Start a Review</a>
             </div>
             <div class="role shopper">
                 <h2>For Personal Shoppers</h2>
                 <p>
                     Connect users with hard-to-find items tailored to their needs. Use your skills to locate unique products.
                 </p>
-                <a href="personal_dashboard.html" class="cta_btn">Get Started</a>
+                <a href="../view/conversations_view.php" class="cta_btn">Get Started</a>
             </div>
         </section>
 
@@ -101,7 +89,6 @@
             <ul>
                 <li><strong>Comprehensive Reviews:</strong> Explore and create detailed reviews for niche products.</li>
                 <li><strong>Shopping Assistance:</strong> Help users locate rare or unique items.</li>
-                <!-- <li><strong>Personalized Dashboard:</strong> Manage your activity and track user requests with ease.</li> -->
             </ul>
         </section>
     </main>

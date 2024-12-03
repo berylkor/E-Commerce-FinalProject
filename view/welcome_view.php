@@ -31,12 +31,11 @@
         </div>
         <!-- User details -->
             <div class="user_container">
-                <span class="material-symbols-outlined">account_circle</span>
-                <div class="profile_details">
+                
                     <?php
                         displayProfile();
                     ?>
-                </div>
+                
                 <a href="../view/profile_view.php" style="text-decoration: none;">
                     <span class="material-symbols-outlined">keyboard_arrow_down</span>
                 </a>
@@ -48,7 +47,7 @@
     <aside class="menu_container">
         <div class="container">
             <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
-            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a> 
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
     </aside>
@@ -60,13 +59,8 @@
                     <p> <?php echo date('j F Y') ?> </p>
                     <span id="trophy" class="material-symbols-outlined">emoji_events</span>
                 </div>
-                <h2> Weekly Ranking List </h2>
-                <div class="tag">
-                    <p>Prada</p>
-                    <p>Canon</p>
-                    <p>Hilton</p>
-                </div>  
-                <a href="rankings_view.php">
+                <h2> Ranking List </h2>
+                <a href="../view/rankings_view.php">
                     <button>Details</button>
                 </a>
         </div>
@@ -76,13 +70,8 @@
                     <p> <?php echo date('j F Y') ?> </p>
                     <span id="rating" class="material-symbols-outlined">reviews</span>
                 </div>
-                <h2> Expert Ratings </h2>
-                <div class="tag">
-                    <p>Content Creator</p>
-                    <p>Entrepreneur</p>
-                    <p>Restaurateur</p>
-                </div>  
-                <a href="rankings_view.php">
+                <h2> Expert Ratings </h2> 
+                <a href="../viewrankings_view.php">
                     <button>Details</button>
                 </a>
         </div>
@@ -93,13 +82,8 @@
                     <span id="bubble" class="material-symbols-outlined">maps_ugc</span>
                 </div>
                 <h2>Chat with Shoppers</h2>
-                <div class="tag">
-                    <p>Hotels</p>
-                    <p>Restaurants</p>
-                    <p>Clothes</p>
-                </div>
                 <div class="btn"> 
-                    <a href="personalshopping.php">
+                    <a href="../view/personalshopping.php">
                         <button>Start Chat</button>
                     </a>
                 </div>
@@ -110,13 +94,8 @@
                     <span id="token" class="material-symbols-outlined">token</span>
                 </div>
                 <h2>Niche Curated List</h2>
-                <div class="tag">
-                    <p>Hotels</p>
-                    <p>Restaurants</p>
-                    <p>Clothes</p>
-                </div>
                 <div class="btn">
-                    <a href="curatedlist_view.php">
+                    <a href="../view/curatedlist_view.php">
                         <button>View List</button>
                     </a>
                 </div>

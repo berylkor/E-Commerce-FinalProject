@@ -123,6 +123,9 @@ form
 }
 #profileform
 {
+    height: fit-content;
+    padding: 1rem;
+    margin-top: 3rem;
     box-shadow: var(--box-shadow);
     background: var(--color-brand-2);
 

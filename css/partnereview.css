@@ -134,32 +134,17 @@ aside
     color: var(--color-brand-2);
 }
 
-#logout a 
-{
-    color: var(--color-text); 
-}
-
-#logout:hover a 
-{
-    color: #ff4d4d;
-}
-
-#logout:hover a span 
-{
-    color: #ff4d4d;
-}
 
 main
 {
     grid-area: main;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     padding: var(--padding-large);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 main > h3

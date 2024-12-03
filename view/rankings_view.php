@@ -1,6 +1,9 @@
 <?php
     include_once("../functions/display_profile.php");
     include_once("../functions/display_themereviews.php");
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +35,9 @@
         </div>
         <!-- User details -->
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
                 <?php
                     displayProfile();
                 ?>
-            </div>
             <a href="../view/profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
@@ -48,7 +48,7 @@
     <aside class="menu_container">
         <div class="container">
             <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
-            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a> 
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
         <div class="menu_content">
@@ -59,20 +59,24 @@
             <!-- Product Filtering within the provided categories -->
             <ul>
                 <li> 
-                    <input type="checkbox" name="" id="">
-                    <a href=""> <span class="material-symbols-outlined">flight</span> Media </a> 
+                    <input type="radio" name="theme" id="media_filter" value="media_container">
+                    <p> <span class="material-symbols-outlined">movie</span> Media </p> 
                 </li>
                 <li>
-                    <input type="checkbox" name="" id="">
-                    <a href=""> <span class="material-symbols-outlined">nightlife</span> Entertainment </a> 
+                    <input type="radio" name="theme" id="ent_filter" value="ent_container">
+                    <p> <span class="material-symbols-outlined">celebration</span> Entertainment </p> 
                 </li>
                 <li>
-                    <input type="checkbox" name="" id="">
-                    <a href=""> <span class="material-symbols-outlined">cardiology</span> Artifacts </a> 
+                    <input type="radio" name="theme" id="artifact_filter" value="artif_container">
+                    <p><span class="material-symbols-outlined">storefront</span> Artifacts </p> 
                 </li>
                 <li>
-                    <input type="checkbox" name="" id="">
-                    <a href=""> <span class="material-symbols-outlined">local_dining</span> Food Experiences </a> 
+                    <input type="radio" name="theme" id="food_filter" value="food_container">
+                    <p><span class="material-symbols-outlined">local_dining</span> Food Experiences </p> 
+                </li>
+                <li>
+                    <input type="radio" name="theme" id="all_filter" value="all">
+                    <p><span class="material-symbols-outlined">view_list</span> All </p> 
                 </li>
             </ul>
         </div>
@@ -124,4 +128,5 @@
         <p>&copy; 2024 NicheNest</p>
     </footer>
 </body>
+<script src="../js/review.js"></script>
 </html>

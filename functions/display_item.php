@@ -12,8 +12,6 @@ function display_custom_items($id)
 
     foreach ($items as $item)
     {
-        // $themeid = $review["theme"];
-        // $theme = $displayreview->get_review_theme($themeid);
         echo 
 
         "<div class='item-card'>
@@ -26,7 +24,6 @@ function display_custom_items($id)
                 <form action='../actions/add_cart_action.php' method='post'>
                     <input type='hidden' name='itemid' id='itemid' value='".$item["item_id"]."'>
                     <button type='submit'class='button book'>Add to Cart</button>
-                    <button class='button delete'><span class='material-symbols-outlined'>delete</span></button>
                 </form>
             </div>
         </div>";

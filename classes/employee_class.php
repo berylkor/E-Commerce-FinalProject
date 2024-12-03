@@ -131,6 +131,18 @@ class employee_class extends db_connection
         }
     }
 
+    public function get_employeedetails($id)
+    {
+
+        $ndb = new db_connection();
+        // sanitise the input 
+        $id =  mysqli_real_escape_string($ndb->db_conn(), $id);
+        // sql statement to collect information on the employee based on their id
+        $sql = "SELECT * FROM `employee` WHERE `employee_id` = '$id'";
+        return $ndb->db_fetch_one($sql);	
+
+    }
+
 }
 
 ?>

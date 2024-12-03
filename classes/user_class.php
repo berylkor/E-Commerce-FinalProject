@@ -153,6 +153,29 @@ class user_class extends db_connection
         return $this->db_query($sql);
     }
 
+    public function update_user_wimg($image, $name, $email, $contact, $id)
+    {
+        $ndb = new db_connection();
+        $image =  mysqli_real_escape_string($ndb->db_conn(), $image);
+		$name =  mysqli_real_escape_string($ndb->db_conn(), $name);
+        $email = mysqli_real_escape_string($ndb->db_conn(), $email);
+		$contact =  mysqli_real_escape_string($ndb->db_conn(), $contact);
+
+        $sql = "UPDATE `users` SET `image` = '$image', `name` = '$name', `email` = '$email', `contact` = '$contact' WHERE `user_id` = $id";
+        return $this->db_query($sql);
+    }
+
+    public function update_user($name, $email, $contact, $id)
+    {
+        $ndb = new db_connection();
+		$name =  mysqli_real_escape_string($ndb->db_conn(), $name);
+        $email = mysqli_real_escape_string($ndb->db_conn(), $email);
+		$contact =  mysqli_real_escape_string($ndb->db_conn(), $contact);
+
+        $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `contact` = '$contact' WHERE `user_id` = $id";
+        return $this->db_query($sql);
+    }
+
 }
 
 

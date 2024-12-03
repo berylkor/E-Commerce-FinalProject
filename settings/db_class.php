@@ -8,6 +8,8 @@ require('db_cred.php');
  *@author Beryl A A Koram
  *@version 1.1
  */
+if (!class_exists('db_connection'))
+{
 class db_connection
 {
 	
@@ -152,5 +154,6 @@ class db_connection
 		return false;
 	}
 	
+}
 }
 ?>
