@@ -1,13 +1,13 @@
 <?php
-//connect to the brand class
+//connect to the payment class
 include_once("../classes/order_class.php");
 
 
 
-function add_order_ctr($customer_id, $invoice, $order_date, $status)
+function add_order_ctr($customer_id, $invoice, $totalamount, $shippingfee)
 {
 	$addorder = new order_class();
-	return $addorder->add_order($customer_id, $invoice, $order_date, $status);
+	return $addorder->add_order($customer_id, $invoice, $totalamount, $shippingfee);
 }
 
 function add_orderdetails_ctr($order_id, $product_id, $quantity)

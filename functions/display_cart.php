@@ -64,15 +64,24 @@ function display_cart_total()
             $totalprice += $subtotal;
         }
         $delivery = $displaycart->get_cart_delivery($customerid);
+
+        $deliveryfee = $delivery ? $delivery['fee'] : 0;
+
         $deliveryfee = $delivery['fee'];
         $cart_total = $totalprice + $deliveryfee;
         echo "<form action='../actions/add_order_action.php' method='post' name='order-form' class='cart-total'>
                     <h3>Cart Total</h3>
-                    <p name='subtotal'>Cart Subtotal: <span>$".number_format($totalprice,2)."</span></p>
+                    <p  id='subtotal'>Cart Subtotal: <span>$".number_format($totalprice,2)."</span></p>
                     <p name='deliveryfee'>Delivery<span>$".number_format($deliveryfee,2)."</span></p>
                     <h4 name='totalamount'>Total: <span>$".number_format($cart_total,2)."</span></h4>
+                    <input type='hidden' name='subtotal' value='".$totalprice."'>
+                    <input type='hidden' name='deliveryfee' value='".$deliveryfee."'>
                     <button type='submit' class='button checkout'>Checkout</button>
              </form>";
+    }
+    else
+    {
+        echo "<form> </form>";
     }
 }
 

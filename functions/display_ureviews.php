@@ -1,5 +1,6 @@
 <?php
 include_once("../classes/review_class.php");
+include_once("../classes/expert_class.php");
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -7,10 +8,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
 function display_ureviews()
 {
+    // get user's employee id from the session
     $name = $_SESSION['user_id'];
+    // find their reviewer id
+    $expert = new expert_class();
+    $expertid = $expert->get_expert($name);
+    $id = $expertid['reviewer_id'];
+
+    // get their reviews based on their reviewer id
     $displayreview = new review_class();
-    $reviews = $displayreview->get_youreviews($name);
+    $reviews = $displayreview->get_youreviews($id);
     
+    // display each of their reviews
     foreach ($reviews as $review)
     {
         $themeid = $review["theme"];
@@ -18,7 +27,7 @@ function display_ureviews()
         echo 
         "<div class='review-card'>
             <img src='".$review["image"]."' alt='Product image' width='100px' class='review-image'>
-            <h4 class='review-title'>".$review["product_name"]."</h4>
+            <h4 class='review-title'>".$review["name"]."</h4>
             <p class='review-score'>Overall Score:".$review["score"]."</p>
             <p class='review-theme'>".$theme["theme_name"]."</p>
             <p class='review-content'>".$review["comment"]."</p>
@@ -28,9 +37,16 @@ function display_ureviews()
 
 function display_oreviews()
 {
+    // get employee id from the session
     $name = $_SESSION['user_id'];
+
+      // find their reviewer id
+      $expert = new expert_class();
+      $expertid = $expert->get_expert($name);
+      $id = $expertid['reviewer_id'];
+
     $displayreview = new review_class();
-    $reviews = $displayreview->get_othereviews($name);
+    $reviews = $displayreview->get_othereviews($id);
     
     foreach ($reviews as $review)
     {
@@ -39,7 +55,7 @@ function display_oreviews()
         echo 
         "<div class='review-card'>
             <img src='".$review["image"]."' alt='Product image' width='100px' class='review-image'>
-            <h4 class='review-title'>".$review["product_name"]."</h4>
+            <h4 class='review-title'>".$review["name"]."</h4>
             <p class='review-score'>Overall Score:".$review["score"]."</p>
             <p class='review-theme'>".$theme["theme_name"]."</p>
             <p class='review-content'>".$review["comment"]."</p>

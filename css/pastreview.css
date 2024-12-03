@@ -146,6 +146,7 @@ main
     grid-area: main;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .review-grid

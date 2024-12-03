@@ -1,6 +1,7 @@
 <?php
-    include "../controllers/user_controller.php";
-    
+    include_once("../controllers/user_controller.php");
+    // Include a connection file
+
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

@@ -1,5 +1,12 @@
 <?php
     include_once("../functions/display_profile.php");
+    include_once("../functions/display_productreviews.php");
+    
+    if (isset($_GET['key'])) 
+    {
+        // get review id from form
+        $id = $_GET["key"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +29,11 @@
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
-            <a href="productreviews.php">    <button class="header_btn"> Rankings </button></a>
-            <a href="">    <button class="header_btn"> Shopping </button></a>
-            <a href="logout.php">
+        <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php"> <button class="header_btn"> Shopping </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
@@ -46,33 +53,26 @@
     <!-- Sidebar section -->
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/glass.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a> 
         </div>
         <hr>
-        <div class="menu_content">
-            <!-- Logout Button -->
-            <ul>
-                <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
-            </ul>
-        </div>
+        
     </aside>
 
     <main>
-        <section class="details">
+        <!-- <section class="details">
             <div class="flexbox">
                 <h2>Camera Kit</h2>
                 <p class="score">Overall Score: 4.67 / 5.00</p>
-                <div class="purchaselink"> To purchase this item: <p>Click here</p></div>
+                <div class="purchaselink"> To purchase this item: <a href="">Click here</a></div>
             </div>
             <img src="../images/camera.jpg" alt="">
         </section>
 
-        <!-- Item Review Section -->
         <h3>Individual Review and Scores</h3>
         <section class="individualreviews">
-            <!-- Expert Review -->
+
             <div class="comment_container">
                 <div class="comment_header">
                     <div class="commentuser_container">
@@ -100,8 +100,10 @@
                 </div>
             </div>
 
-
-        </section>
+        </section> -->
+        <?php
+            display_individualreviews($id)
+        ?>
     </main>
 
     <!-- Page Footer -->

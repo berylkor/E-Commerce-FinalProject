@@ -59,9 +59,8 @@ $shopper = $assigns['shopper_id'];
     </header>
     <aside class="menu_container">
         <div class="container">
-            <img src="" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a> 
         </div>
         <hr>
         <div class="menu_content">

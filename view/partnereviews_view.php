@@ -19,8 +19,8 @@
     <header>
         <h2 id="nichelogo">NicheNest</h2>
         <div class="btn_container">
-            <a href="about.html"><button class="header_btn"> About Us</button></a>
-            <a href="dashboard.html"><button class="header_btn"> Home </button></a>
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/dashboard_view.php"><button class="header_btn"> Home </button></a>
         </div>
         <div class="user_container">
             <span class="material-symbols-outlined">account_circle</span>
@@ -38,9 +38,8 @@
     <!-- Ad Space -->
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Ad Space</a>  
         </div>
         <hr>
         <div class="menu_content">
@@ -50,16 +49,15 @@
             </div>
             <ul>
                 <li> 
-                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> New Review </a> 
+                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> New Review </a> 
                 </li>
                 <li>
-                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
+                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> Past Reviews </a> 
                 </li>
                 <li>
                     <a href="personal_dashboard.html"> <span class="material-symbols-outlined">cardiology</span> Personal </a> 
                 </li>
-                <li id="logout"> <a href="logout.php"> <span class="material-symbols-outlined">logout</span> Logout </a> </li>
-            </ul>
+                
         </div>
     </aside>
 
@@ -93,7 +91,7 @@
                 <span class="material-symbols-outlined">palette</span>
             </div>
             <select name="theme" id="theme" required>
-                <option value="0">--Select a Theme--</option>
+                <option value="0" selected disabled>Select a Theme</option>
                 <option value="1">Media</option>
                 <option value="2">Entertainment</option>
                 <option value="3">Artifacts</option>

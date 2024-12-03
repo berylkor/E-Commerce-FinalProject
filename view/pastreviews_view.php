@@ -55,20 +55,6 @@
         <section class="user-reviews">
             <h3>Products You Reviewed</h3>
             <div class="review-grid">
-                <!-- <div class="review-card">
-                    <img src="../images/product1.jpg" alt="Product Image">
-                    <h4>Camera Kit</h4>
-                    <p>Overall Score: 4.67</p>
-                    <p>Artifact</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium soluta quam numquam perferendis aliquid nemo distinctio deleniti fuga consequuntur. Quis?</p>
-                </div>
-                <div class="review-card">
-                    <img src="../images/product1.jpg" alt="Product Image">
-                    <h4>Camera Kit</h4>
-                    <p>Overall Score: 4.67</p>
-                    <p>Artifact</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium soluta quam numquam perferendis aliquid nemo distinctio deleniti fuga consequuntur. Quis?</p>
-                </div> -->
                 <?php
                     display_ureviews();
                 ?>

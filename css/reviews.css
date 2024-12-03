@@ -188,7 +188,7 @@ main
 .details .purchaselink 
 {
     font-size: var(--fontsize-regular);
-    text-align: right; 
+    text-align: left; 
 }
 
 .details .purchaselink a 

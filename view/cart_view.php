@@ -24,11 +24,11 @@ include_once("../functions/display_cart.php");
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
-            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
-            <a href="">    <button class="header_btn"> Shopping </button></a>
-            <a href="logout.php">
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php"> <button class="header_btn"> Shopping </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
@@ -47,7 +47,7 @@ include_once("../functions/display_cart.php");
     </header>
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
+            <img src="" alt="ads image" width="120px" height="120px">
             <p>Ad Space</p>
             <a href="#">Learn More</a> 
         </div>
@@ -59,13 +59,13 @@ include_once("../functions/display_cart.php");
             </div>
             <ul>
                 <li> 
-                    <a href="partnereviews_view.php"> <span class="material-symbols-outlined">flight</span> Chat </a> 
+                    <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">flight</span> Chat </a> 
                 </li>
                 <li>
-                    <a href="pastreviews_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
+                    <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">nightlife</span> List </a> 
                 </li>
                 <li>
-                    <a href="cart_view.php"> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
+                    <a href="../view/cart_view.php"> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
                 </li>
             </ul>
         </div>
@@ -73,7 +73,7 @@ include_once("../functions/display_cart.php");
 
     <main>
         <div class="shopping-cart-container">
-            <!-- Left Section: Shopping Bag -->
+            <!-- Shopping Bag -->
             <div class="cart-items">
                 <h2>Shopping Bag</h2>
                 <?php
@@ -81,7 +81,7 @@ include_once("../functions/display_cart.php");
                 ?>
             </div>
         
-            <!-- Right Section: Summary -->
+            <!-- Summary -->
             <div class="cart-summary">
                 <h2>Calculated Shipping</h2>
                 <form action="../actions/add_shipping_action.php" method="post" class="shipping-form" name="shipping-form">

@@ -30,4 +30,11 @@ class expert_class extends db_connection
         return $this->db_query($sql);
     }
 
+    public function get_expert($id)
+    {
+        $ndb = new db_connection();
+        $sql = "SELECT * FROM `reviewer` WHERE `employee_id` = '$id'";
+        return $this->db_fetch_one($sql);
+    }
+
 }

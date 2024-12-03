@@ -12,25 +12,21 @@ function display_themereviews($id)
     $rank = 1;
     foreach ($reviews as $review)
     {
-        // $themeid = $review["theme"];
-        // $theme = $displayreview->get_review_theme($themeid);
         echo 
         "
                 <div class='product_card'>
                     <div class='top'>
                         <h4 class='ranking_no'>".$rank."</h4>
-                        <p class='score'>".$review["score"]."/ 5.00</p>
+                        <p class='score'>".number_format($review["score"],2)."/ 5.00</p>
                     </div>
                     <img src='".$review["image"]."' alt='>
-                    <p id='item_name'>".$review["product_name"]."</p>
-                    <a href='productreviews.php?key=".$review["product_name"]."'>Click for more</a>
+                    <p id='item_name'>".$review["name"]."</p>
+                    <a href='productreviews.php?key=".$review["product_id"]."'>Click for more</a>
                 </div>
         ";
         $rank += 1;
     }
 }
-
-// <div class='prod_description'>".$review["comment"]."</div>
 
 
 ?>

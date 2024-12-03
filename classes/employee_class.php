@@ -4,8 +4,14 @@ require_once("../settings/db_class.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    require_once( '../PHPMailer/src/Exception.php');
+    require_once( '../PHPMailer/src/PHPMailer.php');
+    require_once( '../PHPMailer/src/SMTP.php'); 
 /**
-*User class to handle all functions related to users
+*Employee class to handle all functions related to employees
 */
 /**
  *@author Beryl A A Koram
@@ -78,6 +84,44 @@ class employee_class extends db_connection
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $username;
                 $_SESSION['role_id'] = $userRole;
+                // Generate OTP and store it in session
+                $_SESSION['otp'] = rand(100000, 999999); //otp
+                $_SESSION['otp_expires'] = time() + 120; // OTP expiration
+    
+                // Send OTP via PHPMailer
+                //instance of the phpmailer
+                $mail = new PHPMailer(true); 
+    
+                try 
+                {
+                    // Server settings 
+                    // For TLS (Port 587)
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'berylkoram378@gmail.com';
+                    $mail->Password = 'ezfp lcdy khas roav';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port = 587;
+    
+                    // Recipients
+                    $mail->setFrom('berylkoram378@gmail.com', 'NichNest Partner Login OTP'); 
+                    $mail->addAddress($email); 
+    
+                    
+                    $mail->isHTML(true); 
+                    $mail->Subject = 'Your OTP';
+                    $mail->Body    = 'Your OTP to login is: ' . $_SESSION['otp'];
+    
+                    // Sending email
+                    $mail->send();
+                    header("Location: ../view/partner_verification_view.php"); 
+                    exit();
+                } 
+                catch (Exception $e) 
+                {
+                    echo "OTP could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
                 return true;
             }
             else 
