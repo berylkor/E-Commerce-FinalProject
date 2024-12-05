@@ -275,3 +275,24 @@ table tbody tr:nth-child(even)
 {
     text-decoration: underline;
 }
+
+.review_section button 
+{
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.delbtn
+{
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.delbtn:hover
+{
+    background-color: #cc0000; 
+}

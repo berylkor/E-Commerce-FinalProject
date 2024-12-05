@@ -99,8 +99,10 @@ else if ($role = 4)
                     </li>
                     <li>
                         <a href='../view/sourced_items.php'> <span class='material-symbols-outlined'>inventory</span> List Items </a> 
-                    </li>
-                    ";
+                    </li> 
+                    <li>
+                        <a href='../view/items_display.php'> <span class='material-symbols-outlined'>view_list</span> Items Display </a> 
+                    </li> ";
                 }
             ?>
             </ul>

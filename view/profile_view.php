@@ -4,11 +4,16 @@
     include_once("../functions/display_customerdetails.php");
     include_once("../functions/display_profile.php");
     include_once("../functions/display_privileges.php");
+    // start a session if not already started
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+    // store the role id 
+    $role = $_SESSION['role_id'];
+    if ($role == 3 | $role == 4 )
+    {
+        // redirect users if they are not meant to be
+        header("../view/index.php");
     }
 ?>
 
@@ -68,19 +73,23 @@
                 displayCustomerdetails();
             ?>
 
-        <div class="other_container">           
-            
-            <!-- privilege level table -->
-            <div class="shopperlevel_container">
-                <h3 id="tier_level">Customer Tier Level</h3>
-                <form action="../view/subscription_view.php" method="post" name="levelform" id="levelform">  
-                    <?php
-                        display_privileges();
-                    ?>
-                    <button type="submit">Confirm</button>
-                </form>
-            </div>
-        </div>
+    <?php
+        if ($role == 2)
+        {
+            echo "<div class='other_container'>           
+                <!-- privilege level table -->
+                <div class='shopperlevel_container'>
+                    <h3 id='tier_level'>Customer Tier Level</h3>
+                    <form action='../view/subscription_view.php' method='post' name='levelform' id='levelform'>";  
+                        
+                            display_privileges();
+                    
+            echo        "<button type='submit'>Confirm</button>
+                    </form>
+                </div>
+            </div>";
+       }
+        ?>
     </main>
 
     <!-- Page Footer -->

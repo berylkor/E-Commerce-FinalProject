@@ -36,7 +36,14 @@ class items_class extends db_connection
     public function get_custom_items($custid)
     {
         $ndb = new db_connection();	
-        $sql="SELECT * FROM `sourced_items` WHERE `customer_id` = '$custid'";
+        $sql="SELECT * FROM `sourced_items` WHERE `customer_id` = '$custid'"; // return all the details of items curated for a specific user
+        return $ndb->db_fetch_all($sql);
+    }
+
+    public function get_shopper_items($id)
+    {
+        $ndb = new db_connection();	
+        $sql="SELECT * FROM `sourced_items` WHERE `shopper_id` = '$id'"; // return the details of all items curarted by a specific shopper
         return $ndb->db_fetch_all($sql);
     }
 }

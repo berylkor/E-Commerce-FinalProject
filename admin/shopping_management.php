@@ -4,6 +4,21 @@ include_once("../functions/display_personalshoppers.php");
 include_once("../functions/display_customers.php");
 include_once("../functions/display_match_form.php");
 
+// start a session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// store the role id 
+$role = $_SESSION['role_id'];
+if (!$role == 1)
+{
+    // redirect users if they are not meant to be
+    header("../view/index.php");
+}
+
+// Enable debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -25,19 +40,16 @@ include_once("../functions/display_match_form.php");
         <!-- Buttons to other pages -->
         <div class="btn_container">
             <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../admin/dashboard_view.php"><button class="header_btn"> Home </button></a>
             <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
                 <?php
                     displayProfile();
                 ?>
-            </div>
             <a href="../view/profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
@@ -46,9 +58,8 @@ include_once("../functions/display_match_form.php");
 
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+        <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+        <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a>  
         </div>
         <hr>
         <div class="menu_content">
@@ -58,13 +69,13 @@ include_once("../functions/display_match_form.php");
             </div>
             <ul>
                 <li> 
-                    <a href="shopping_management.php"> <span class="material-symbols-outlined">flight</span> Personal Shopping </a> 
+                    <a href="../admin/dashboard_view.php"> <span class="material-symbols-outlined">dashboard</span> Dashboard </a> 
+                </li>
+                <li> 
+                    <a href="../admin/shopping_management.php"> <span class="material-symbols-outlined">shopping_bag</span> Personal Shopping </a> 
                 </li>
                 <li>
-                    <a href=""> <span class="material-symbols-outlined">nightlife</span> Expert Reviews </a> 
-                </li>
-                <li>
-                    <a href=""> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
+                    <a href="../admin/reviews_management.php"> <span class="material-symbols-outlined">rate_review</span> Expert Reviews </a> 
                 </li>
             </ul>
         </div>
@@ -78,7 +89,6 @@ include_once("../functions/display_match_form.php");
                         <tr>
                             <th>Personal Shopper ID</th>
                             <th>Name</th>
-                            <th>Theme</th>
                         </tr>
                 </thead>
                 <tbody>
@@ -95,12 +105,29 @@ include_once("../functions/display_match_form.php");
                 <thead>
                         <tr>
                             <th>Customer ID</th>
-                            <th>Theme</th>
+                            <th>Name</th>
                         </tr>
                 </thead>
                 <tbody>
                     <?php
                         display_customers();
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="assignment_section">
+            <h2>NicheNest Customer Assignments</h2>
+            <table>
+                <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Personal Shopper Name</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        display_assignments();
                     ?>
                 </tbody>
             </table>

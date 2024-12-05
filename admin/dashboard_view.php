@@ -1,6 +1,17 @@
 <?php
 include_once("../functions/display_profile.php");
 
+// start a session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// store the role id 
+$role = $_SESSION['role_id'];
+if (!$role == 1)
+{
+    // redirect users if they are not meant to be
+    header("../view/index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,13 +62,23 @@ include_once("../functions/display_profile.php");
             </div>
             <ul>
                 <li> 
-                    <a href="../admin/shopping_management.php"> <span class="material-symbols-outlined">flight</span> Personal Shopping </a> 
+                    <a href="../admin/dashboard_view.php"> <span class="material-symbols-outlined">dashboard</span> Dashboard </a> 
+                </li>
+                <li> 
+                    <a href="../admin/shopping_management.php"> <span class="material-symbols-outlined">shopping_bag</span> Personal Shopping </a> 
                 </li>
                 <li>
-                    <a href="../admin/"> <span class="material-symbols-outlined">nightlife</span> Expert Reviews </a> 
+                    <a href="../admin/reviews_management.php"> <span class="material-symbols-outlined">rate_review</span> Expert Reviews </a> 
                 </li>
             </ul>
         </div>
     </aside>
+
+    <main>
+        <section class="intro">
+            <h1>Welcome to NicheNest</h1>
+            <p>The go-to platform for niche product reviews and personalized shopping assistance.</p>
+        </section>
+    </main>
 </body>
 </html>

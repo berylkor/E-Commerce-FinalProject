@@ -11,7 +11,7 @@
     if ($role == 3 | $role == 4 )
     {
         // redirect users if they are not meant to be
-        header("../view/welcome_view.php");
+        header("../view/index.php");
     }
 
 ?>

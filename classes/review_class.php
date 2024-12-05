@@ -140,6 +140,20 @@ class review_class extends db_connection
         return $ndb->db_fetch_all($sql);
     }
 
+    public function get_expertreviews()
+    {
+        $ndb = new db_connection();
+        $sql = "SELECT * FROM `reviews`";
+        return $ndb->db_fetch_all($sql);
+    }
+
+    public function deletereview($id)
+    {
+        $ndb = new db_connection();
+        $sql = "DELETE FROM reviews WHERE review_id = '$id'";
+        return $ndb->db_query($sql);
+    }
+
 }
 
 ?>

@@ -9,6 +9,14 @@ include_once("../functions/display_shoppername.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+    // store the role id 
+    $role = $_SESSION['role_id'];
+    if ($role == 3 | $role == 4 )
+    {
+        // redirect users if they are not meant to be
+        header("../view/index.php");
+    }
+
 // retrieve the user id for the customer
 $id = $_SESSION['user_id'];
 // find the assigned personal shopper based on the user id

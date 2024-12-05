@@ -18,4 +18,10 @@ function add_product_ctr($review_item, $review_score)
 	$addproduct=new review_class();
 	return $addproduct->add_product($review_item, $review_score);
 }
+
+function delete_review_ctr($id)
+{
+	$addproduct=new review_class();
+	return $addproduct->deletereview($id);
+}
 ?>

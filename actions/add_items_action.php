@@ -3,6 +3,9 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+    // Enable debugging
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
@@ -31,7 +34,7 @@
                     {
                         if(add_item_ctr($itemname, $price, $customer, $shopper, $filepath))
                         {
-                            header("Location:../view/dashboard_view.php");
+                            header("Location:../view/items_display.php");
                             exit();
                         }
                         else

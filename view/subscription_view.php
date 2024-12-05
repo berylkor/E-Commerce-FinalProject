@@ -4,6 +4,18 @@
     include_once("../functions/display_profile.php");
     include_once("../functions/display_subscription.php");
 
+// start a session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// store the role id 
+$role = $_SESSION['role_id'];
+if ($role == 3 | $role == 4 )
+{
+    // redirect users if they are not meant to be
+    header("../view/index.php");
+}
+    
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
     // get privilege id from form
