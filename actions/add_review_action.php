@@ -5,6 +5,10 @@
     session_start();
  }
 
+ ini_set('display_errors', 1);
+ ini_set('display_startup_errors', 1);
+ error_reporting(E_ALL);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
     // get inputs from post request
@@ -32,28 +36,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             if (in_array($fileextenstion, $extensions) && $filesize < 2000000)
             {
-                $directory = "../images/";
+                $directory = "../../uploads/";
                 $filepath = $directory.basename($filename);
 
                 if (move_uploaded_file($filetmppath, $filepath))
                 {   
                     $product = add_product_ctr($review_item, $review_score);
-                    if ($product)
+                    if (!empty($product)) 
                     {
-                        if(add_review_wimg_ctr($product, $review_item, $id, $review_score, $review_desc, $review_theme, $review_url,  $filepath))
+                        if (add_review_wimg_ctr($product, $review_item, $id, $review_score, $review_desc, $review_theme, $review_url, $filepath)) 
                         {
                             header("Location:../view/pastreviews_view.php");
                             exit();
                         }
-                        else
+                        else 
                         {
                             echo "Error adding review";
                         }
-                    }
-                    else
+                    } 
+                    else 
                     {
-                        echo "Error adding product";
-                        
+                        // var_dump
+                        // echo "Error adding product: product ID is empty.";
                     }
                 }
                 else
@@ -68,7 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-        $add = add_review_ctr($review_item, $reviewer, $review_score, $review_desc, $review_theme, $review_url);
+        $product = add_product_ctr($review_item, $review_score);
+        if ($product)
+        {
+            $add = add_review_ctr($review_item, $reviewer, $review_score, $review_desc, $review_theme, $review_url, $product);
             if ($add !== false)
             {
                 header("Location:../view/pastreviews_view.php");
@@ -78,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
                 echo "Error";
             }
+        }
     }
 }
 

@@ -15,8 +15,8 @@
     <header>
         <h2 id="nichelogo">NicheNest</h2>
         <div class="btn_container">
-            <a href="about.html"><button class="header_btn">About Us</button></a>
-            <a href="welcome.html"><button class="header_btn">Home</button></a>
+            <a href="../view/about_view.php"><button class="header_btn">About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn">Home</button></a>
         </div>
     </header>
 
@@ -28,7 +28,7 @@
                 Thank you for signing up to work with NicheNest! Your application is currently pending approval. 
                 Please wait while our team reviews your information.
             </p>
-            <a href="index.html"><button class="btn_primary">Return to Home</button></a>
+            <a href="../view/index.php"><button class="btn_primary">Return to Home</button></a>
         </section>
     </main>
 

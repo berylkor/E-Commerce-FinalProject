@@ -70,6 +70,7 @@ class user_class extends db_connection
             $email = $row['email'];
             $hashpassword = $row['password'];
             $userRole = $row['role_id'];
+            $privilege = $row['privilege_id'];
             
             // verify the password provided matches the password in the database
             $verify = password_verify($ppassword, $hashpassword);
@@ -81,6 +82,7 @@ class user_class extends db_connection
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $username;
                 $_SESSION['role_id'] = $userRole;
+                $_SESSION['privilege_id'] = $privilege;
 
                 // Generate OTP and store it in session
                 $_SESSION['otp'] = rand(100000, 999999); //otp
@@ -150,6 +152,29 @@ class user_class extends db_connection
 
         // SQL query to update the user's privilege
         $sql = "UPDATE `users` SET `privilege_id` = '$privilege_id' WHERE `user_id` = '$user_id'";
+        return $this->db_query($sql);
+    }
+
+    public function update_user_wimg($image, $name, $email, $contact, $id)
+    {
+        $ndb = new db_connection();
+        $image =  mysqli_real_escape_string($ndb->db_conn(), $image);
+		$name =  mysqli_real_escape_string($ndb->db_conn(), $name);
+        $email = mysqli_real_escape_string($ndb->db_conn(), $email);
+		$contact =  mysqli_real_escape_string($ndb->db_conn(), $contact);
+
+        $sql = "UPDATE `users` SET `image` = '$image', `name` = '$name', `email` = '$email', `contact` = '$contact' WHERE `user_id` = $id";
+        return $this->db_query($sql);
+    }
+
+    public function update_user($name, $email, $contact, $id)
+    {
+        $ndb = new db_connection();
+		$name =  mysqli_real_escape_string($ndb->db_conn(), $name);
+        $email = mysqli_real_escape_string($ndb->db_conn(), $email);
+		$contact =  mysqli_real_escape_string($ndb->db_conn(), $contact);
+
+        $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `contact` = '$contact' WHERE `user_id` = $id";
         return $this->db_query($sql);
     }
 

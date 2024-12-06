@@ -31,60 +31,65 @@ class review_class extends db_connection
 
     public function add_product($product_name, $score)
     {
-        $ndb = new db_connection();	
-        $product_name =  mysqli_real_escape_string($ndb->db_conn(), $product_name);
-		$score =  mysqli_real_escape_string($ndb->db_conn(), $score);
+        $ndb = new db_connection();
+        $product_name = mysqli_real_escape_string($ndb->db_conn(), $product_name);
+        $score = mysqli_real_escape_string($ndb->db_conn(), $score);
 
+        // Check if the product exists in the reviews table
         $query = "SELECT * FROM `reviews` WHERE `name` = '$product_name'";
         $results = $this->db_fetch_all($query);
-        if($results)
+
+        if ($results) 
         {
+            // Calculate the average score
             $scores = 0;
             $total = 0;
-            foreach ($results as $result)
-            {
-                $scores += $result[`score`];
+            foreach ($results as $result) {
+                $scores += $result['score'];
                 $total += 1;
             }
             $avg_score = $scores / $total;
-            $sql = "UPDATE `products` SET `avg_score` = '$avg_score' WHERE `name` = '$product_name';";
-            $results = $this->db_query($sql);
-            if ($results)
+
+            // Update the product's average score
+            $update_sql = "UPDATE `products` SET `avg_score` = '$avg_score' WHERE `name` = '$product_name'";
+            $update_result = $this->db_query($update_sql);
+
+            if ($update_result) 
             {
-                $insert = $ndb->db_insert_id();
-                if ($insert > 0)
-                {
-                    return $insert;
-                }
-                else
-                {
-                    error_log("Insert ID unsuccessful");
-                    return false;
-                }
+                // Retrieve the product ID
+                $select_sql = "SELECT `product_id` FROM `products` WHERE `name` = '$product_name'";
+                $product = $this->db_fetch_one($select_sql);
+                return $product['product_id'];
+            } 
+            else 
+            {
+                error_log("Failed to update product: $product_name");
+                return false;
             }
-        }
-        else
+        } 
+        else 
         {
-            $sql = "INSERT INTO `products` (`name`, `avg_score`) VALUES ('$product_name', '$score')";
-            
-            $result = $this->db_query($sql);
-            if ($results)
+            // Insert new product if it does not exist
+            $insert_sql = "INSERT INTO `products` (`name`, `avg_score`) VALUES ('$product_name', '$score')";
+            $insert_result = $this->db_query($insert_sql);
+             
+            if ($insert_result) 
             {
-                $insert = $ndb->db_insert_id();
-                if ($insert > 0)
-                {
-                    return $insert;
-                }
-                else
-                {
-                    error_log("Insert ID unsuccessful");
-                    return false;
-                }
+                // Retrieve the product ID
+                $select_sql = "SELECT `product_id` FROM `products` WHERE `name` = '$product_name'";
+                $product = $this->db_fetch_one($select_sql);
+                return $product['product_id'];
+            } 
+            else 
+            {
+                error_log("Failed to insert product: $product_name");
+                return false;
             }
         }
     }
 
-    public function add_review($review_item, $reviewer, $review_score, $review_desc, $review_theme, $review_url)
+
+    public function add_review($review_item, $reviewer, $review_score, $review_desc, $review_theme, $review_url, $id)
     {
         $ndb = new db_connection();	
         // sanitise the user input from the sign up form
@@ -94,8 +99,9 @@ class review_class extends db_connection
 		$review_desc =  mysqli_real_escape_string($ndb->db_conn(), $review_desc);
 		$review_theme =  mysqli_real_escape_string($ndb->db_conn(), $review_theme);
 		$review_url =  mysqli_real_escape_string($ndb->db_conn(), $review_url);
+		$id =  mysqli_real_escape_string($ndb->db_conn(), $id);
 
-        $sql="INSERT INTO `reviews`(`product_name`, `reviewer_id`, `score`, `comment`, `theme`, `url`) VALUES ('$review_item', '$reviewer', '$review_score', '$review_desc', '$review_theme', '$review_url')";
+        $sql="INSERT INTO `reviews`(`name`, `reviewer_id`, `score`, `comment`, `theme`, `url`, `product_id`) VALUES ('$review_item', '$reviewer', '$review_score', '$review_desc', '$review_theme', '$review_url', '$id')";
         return $this->db_query($sql); 
     }
 

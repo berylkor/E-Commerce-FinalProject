@@ -1,4 +1,6 @@
 <?php
+include_once("../settings/core.php");
+check_login();
 include_once("../functions/display_profile.php");
 include_once("../controllers/assign_controller.php");
 include_once("../actions/add_conversation_action.php");
@@ -14,6 +16,11 @@ $assigns = get_assign_ctr($id);
 // store the shoppers id
 $shopper = $assigns['shopper_id'];
 
+$privilege = $_SESSION['privilege_id'];
+if ($privilege == 1)
+{
+    header("../view/info_page.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +43,10 @@ $shopper = $assigns['shopper_id'];
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php"> <button class="header_btn"> Shopping </button></a>
             <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
             <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
             <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>

@@ -135,10 +135,13 @@ aside
 
 main 
 {
+main 
+{
     grid-area: main;
     padding: var(--padding-large);
     background: var(--color-background);
     color: var(--color-text);
+    overflow-y: auto;
     overflow-y: auto;
 }
 

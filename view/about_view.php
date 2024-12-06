@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
+    <link rel="stylesheet" href="../css/about.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/login_header.css">
-    <link rel="stylesheet" href="../css/about.css">
+    <link rel="shortcut icon" href="../images/favicon_io/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
@@ -14,10 +15,10 @@
     <header>
         <h2 id="nichelogo">NicheNest</h2>
         <div class="btn_container">
-            <a href="about_view.php">
+            <a href="../view/about_view.php">
                 <button class="header_btn"> About Us</button>
             </a>
-            <a href="index.html">
+            <a href="../view/index.php">
                 <button class="header_btn"> Home </button>
             </a>
         </div>

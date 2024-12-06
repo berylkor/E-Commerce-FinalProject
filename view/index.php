@@ -17,10 +17,10 @@
     <header>
         <h2 id="nichelogo">NicheNest</h2>
         <div class="btn_container">
-            <a href="about_view.php">    <button class="header_btn"> About Us</button></a>
-            <a href="index.html">    <button class="header_btn"> Home </button> </a>
-            <a href="partners_view.php">    <button class="header_btn"> Partners </button></a>
-            <a href="login_view.php">   <button class="header_btn"> Customers </button> </a>
+            <a href="../view/about_view.php">    <button class="header_btn"> About Us</button></a>
+            <a href="../view/index.php">    <button class="header_btn"> Home </button> </a>
+            <a href="../view/partners_view.php">    <button class="header_btn"> Partners </button></a>
+            <a href="../view/login_view.php">   <button class="header_btn"> Customers </button> </a>
         </div>
     </header>
 

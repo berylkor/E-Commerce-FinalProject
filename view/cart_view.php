@@ -1,4 +1,6 @@
 <?php
+include_once("../settings/core.php");
+check_login();
 include_once("../functions/display_profile.php");
 include_once("../functions/display_cart.php");
 
@@ -46,6 +48,8 @@ include_once("../functions/display_cart.php");
         <div class="container">
         <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
         <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
+        <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+        <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
         <div class="menu_content">
@@ -56,11 +60,14 @@ include_once("../functions/display_cart.php");
             <ul>
                 <li> 
                     <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">chat</span> Chat </a> 
+                    <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">chat</span> Chat </a> 
                 </li>
                 <li>
                     <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">list_alt</span> List </a> 
+                    <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">list_alt</span> List </a> 
                 </li>
                 <li>
+                    <a href="../view/cart_view.php"> <span class="material-symbols-outlined">shopping_cart</span> cart </a> 
                     <a href="../view/cart_view.php"> <span class="material-symbols-outlined">shopping_cart</span> cart </a> 
                 </li>
             </ul>

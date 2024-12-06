@@ -1,4 +1,6 @@
 <?php
+    include_once("../settings/core.php");
+    check_login();
     include_once("../functions/display_profile.php");
     include_once("../functions/display_productreviews.php");
     

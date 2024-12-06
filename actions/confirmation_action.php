@@ -17,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customer_id = $_SESSION['user_id'];
     $totalamount = $_POST['amount'];
     $orderid = $_POST['orderid'];
+    $customer_id = $_SESSION['user_id'];
+    $totalamount = $_POST['amount'];
+    $orderid = $_POST['orderid'];
 
     if (!$customer_id || !$totalamount || !$orderid) {
         echo "Missing required parameters.";
@@ -24,6 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Sanitize inputs
+    $customer_id = htmlspecialchars($customer_id);
+    $totalamount = htmlspecialchars($totalamount);
+    $orderid = htmlspecialchars($orderid);
     $customer_id = htmlspecialchars($customer_id);
     $totalamount = htmlspecialchars($totalamount);
     $orderid = htmlspecialchars($orderid);
@@ -53,11 +59,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div style='width: 100%; color: #ffffff; background-color: #6A5ACD; padding: 1.5rem; text-align: center; border-radius: 10px;'>
                         <h3 style='font-family: \"Great Vibes\", cursive; font-size: 3rem; margin: 0;'>NicheNest</h3>
                         <p style='margin: 0;'>Everything you need in one place</p>
+            <body style='width: 90%; height: 100%; background-color: #f9f9fc; padding: 2rem; font-family: Poppins, sans-serif; margin: 0; box-sizing: border-box;'>
+                <div style='border: 1px solid #ddd; padding: 1rem;'>
+                    <div style='width: 100%; color: #ffffff; background-color: #6A5ACD; padding: 1.5rem; text-align: center; border-radius: 10px;'>
+                        <h3 style='font-family: \"Great Vibes\", cursive; font-size: 3rem; margin: 0;'>NicheNest</h3>
+                        <p style='margin: 0;'>Everything you need in one place</p>
                     </div>
+                    <div style='padding: 1.5rem;'>
                     <div style='padding: 1.5rem;'>
                         <p>Hello,</p>
                         <p>Thank you for your order. Your payment has been processed, and you can find your invoice below:</p>
                     </div>
+                    <table style='width: 100%; border-collapse: collapse; margin-bottom: 1.5rem;'>
+                        <tr style='background-color: #6A5ACD; color: #ffffff;'>
+                            <td style='padding: 1rem; font-weight: bold; text-align: left;'>Order Number</td>
+                            <td style='padding: 1rem; text-align: right;'>" . htmlspecialchars($summarys[0]['invoice_no']) . "</td>
+                        </tr>
+                    </table>
+                    <table style='width: 100%; border-collapse: collapse; margin-bottom: 1.5rem;'>
+                        <thead>
+                            <tr style='background-color: #f2f4ff;'>
+                                <th style='padding: 1rem; text-align: left;'>Item</th>
+                                <th style='padding: 1rem; text-align: center;'>Quantity</th>
+                                <th style='padding: 1rem; text-align: right;'>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+            $total = 0;
+            foreach ($summarys as $summary) {
+                $itemtotal = $summary['quantity'] * $summary['unit_price'];
+                $total += $itemtotal;
                     <table style='width: 100%; border-collapse: collapse; margin-bottom: 1.5rem;'>
                         <tr style='background-color: #6A5ACD; color: #ffffff;'>
                             <td style='padding: 1rem; font-weight: bold; text-align: left;'>Order Number</td>
@@ -110,10 +141,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div style='margin-top: 1.5rem; text-align: center;'>
                         <p style='font-size: 1rem;'>Your order is being processed and will be delivered soon.</p>
                         <p style='font-size: 0.7rem;'>NicheNest &copy; | All Rights Reserved</p>
+                $invoicecontent .= "
+                            <tr style='border-bottom: 1px solid #ddd;'>
+                                <td style='padding: 1rem; text-align: left;'>" . htmlspecialchars($summary['item_name']) . "</td>
+                                <td style='padding: 1rem; text-align: center;'>" . htmlspecialchars($summary['quantity']) . "</td>
+                                <td style='padding: 1rem; text-align: right;'>$ " . number_format($itemtotal, 2) . "</td>
+                            </tr>";
+            }
+            $ordertotal = ceil($total + $summarys[0]['shipping_fee'] + 5);
+            $invoicecontent .= "
+                        </tbody>
+                    </table>
+                    <table style='width: 100%; border-collapse: collapse;'>
+                        <tr>
+                            <td style='padding: 1rem; text-align: left;'>Subtotal</td>
+                            <td style='padding: 1rem; text-align: right;'>$ " . number_format($total, 2) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 1rem; text-align: left;'>Delivery</td>
+                            <td style='padding: 1rem; text-align: right;'>$ " . number_format($summarys[0]['shipping_fee'], 2) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 1rem; text-align: left;'>Tax</td>
+                            <td style='padding: 1rem; text-align: right;'>$ " . number_format(5, 2) . "</td>
+                        </tr>
+                        <tr style='font-weight: bold;'>
+                            <td style='padding: 1rem; text-align: left;'>Order Total</td>
+                            <td style='padding: 1rem; text-align: right;'>$ " . number_format($ordertotal, 2) . "</td>
+                        </tr>
+                    </table>
+                    <div style='margin-top: 1.5rem; text-align: center;'>
+                        <p style='font-size: 1rem;'>Your order is being processed and will be delivered soon.</p>
+                        <p style='font-size: 0.7rem;'>NicheNest &copy; | All Rights Reserved</p>
                     </div>
                 </div>
             </body>
             </html>";
+
 
 
         // Send the email with PHPMailer
@@ -124,6 +188,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
+            $mail->Username = 'berylkoram378@gmail.com';
+            $mail->Password = 'ezfp lcdy khas roav';
             $mail->Username = 'berylkoram378@gmail.com';
             $mail->Password = 'ezfp lcdy khas roav';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;

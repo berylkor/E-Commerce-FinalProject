@@ -1,4 +1,6 @@
 <?php
+include_once("../settings/core.php");
+check_login();
 include_once("../functions/display_employeeprofile.php");
 include_once("../controllers/shopper_controller.php");
 include_once("../controllers/assign_controller.php");
@@ -17,6 +19,18 @@ $sid = $shopper['shopper_id'];
 $assigns = get_assigns_ctr($sid);
 // store the shopper's assigned customer id
 $customer = $assigns['customer_id'];
+
+// store the role id 
+$role = $_SESSION['role_id'];
+if ($role == 1)
+{
+    // redirect users if they are not meant to be
+    header("../view/welcome_view.php");
+} 
+else if ($role = 4)
+{
+    header("../view/dashboard_view.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,15 +81,28 @@ $customer = $assigns['customer_id'];
                 <span class="material-symbols-outlined">menu</span>
             </div>
             <ul>
-                <li> 
-                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">rate_review</span> New Review </a> 
-                </li>
-                <li>
-                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">history</span> Past Reviews </a> 
-                </li>
-                <li>
-                    <a href="../view/conversations_view.php"> <span class="material-symbols-outlined">chat</span> Conversations </a> 
-                </li>
+            <?php
+                if ($role == 3)
+                {
+                    echo "<li> 
+                        <a href='../view/partnereviews_view.php'> <span class='material-symbols-outlined'>rate_review</span> New Review </a> 
+                        </li>
+                        <li>
+                            <a href='../view/pastreviews_view.php'> <span class='material-symbols-outlined'>history</span> Past Reviews </a> 
+                        </li>";
+                }
+                else if ($role == 4)
+                {
+                    echo
+                   " <li>
+                        <a href='../view/conversations_view.php'> <span class='material-symbols-outlined'>chat</span> Conversations </a> 
+                    </li>
+                    <li>
+                        <a href='../view/sourced_items.php'> <span class='material-symbols-outlined'>inventory</span> List Items </a> 
+                    </li>
+                    ";
+                }
+            ?>
             </ul>
         </div>
     </aside>

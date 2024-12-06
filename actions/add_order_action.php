@@ -14,7 +14,7 @@
         $totalamount = $_POST['subtotal'];
         $deliveryfee = $_POST['deliveryfee'];
         $cart_items = view_cart_ctr($customer_id);
-        $addition = add_order_ctr($customer_id, $invoice,  $totalamount, $deliveryfee);
+        $addition = add_order_ctr($customer_id, $invoice, $totalamount, $deliveryfee);
 
         if ($addition !== false)
         {

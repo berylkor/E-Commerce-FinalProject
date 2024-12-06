@@ -47,10 +47,22 @@ class employee_class extends db_connection
     
         // insert the user's details into the database
         $sql="INSERT INTO `employee`(`name`, `email`, `password`, `role_id`) VALUES ('$username','$email','$hashpassword', '$role_id')";
-        $query = $this->db_query($sql);
-        if ($query)
+        if ($ndb->db_query($sql))
         {
-            return $this->db_insert_id();
+            $insert = $ndb->db_insert_id();
+            if ($insert > 0)
+            {
+                return $insert;
+            }
+            else
+            {
+                error_log("Insert ID unsuccessful");
+                return false;
+            }
+        }
+        else 
+        {
+            return false;
         }
 
     }
@@ -143,6 +155,26 @@ class employee_class extends db_connection
 
     }
 
+    public function update_employee_wimg($name, $email, $image, $id)
+    {
+        $ndb = new db_connection();
+		$name =  mysqli_real_escape_string($ndb->db_conn(), $name);
+        $email = mysqli_real_escape_string($ndb->db_conn(), $email);
+        $image = mysqli_real_escape_string($ndb->db_conn(), $image);
+
+        $sql = "UPDATE `employee` SET `name` = '$name', `email` = '$email', `image` = '$image' WHERE `employee_id` = $id";
+        return $this->db_query($sql);
+    }
+
+    public function update_employee($name, $email, $id)
+    {
+        $ndb = new db_connection();
+		$name =  mysqli_real_escape_string($ndb->db_conn(), $name);
+        $email = mysqli_real_escape_string($ndb->db_conn(), $email);
+
+        $sql = "UPDATE `employee` SET `name` = '$name', `email` = '$email' WHERE `employee_id` = $id";
+        return $this->db_query($sql);
+    }
 }
 
 ?>

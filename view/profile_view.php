@@ -1,7 +1,12 @@
 <?php
+    include_once("../settings/core.php");
+    check_login();
     include_once("../functions/display_customerdetails.php");
     include_once("../functions/display_profile.php");
     include_once("../functions/display_privileges.php");
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

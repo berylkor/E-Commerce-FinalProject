@@ -22,19 +22,16 @@ include_once("../functions/display_profile.php");
         <!-- Buttons to other pages -->
         <div class="btn_container">
             <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../admin/dashboard_view.php"><button class="header_btn"> Home </button></a>
             <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
                 <?php
                     displayProfile();
                 ?>
-            </div>
             <a href="../view/profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
@@ -43,9 +40,8 @@ include_once("../functions/display_profile.php");
 
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
         <div class="menu_content">
@@ -55,13 +51,10 @@ include_once("../functions/display_profile.php");
             </div>
             <ul>
                 <li> 
-                    <a href="shopping_management.php"> <span class="material-symbols-outlined">flight</span> Personal Shopping </a> 
+                    <a href="../admin/shopping_management.php"> <span class="material-symbols-outlined">flight</span> Personal Shopping </a> 
                 </li>
                 <li>
-                    <a href=""> <span class="material-symbols-outlined">nightlife</span> Expert Reviews </a> 
-                </li>
-                <li>
-                    <a href=""> <span class="material-symbols-outlined">nightlife</span> Cart </a> 
+                    <a href="../admin/"> <span class="material-symbols-outlined">nightlife</span> Expert Reviews </a> 
                 </li>
             </ul>
         </div>

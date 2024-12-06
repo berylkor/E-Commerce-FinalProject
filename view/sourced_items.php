@@ -1,6 +1,23 @@
 <?php
-    include_once("../functions/display_profile.php");
+    include_once("../settings/core.php");
+    check_login();
+    include_once("../functions/display_employeeprofile.php");
     include_once("../functions/display_users.php");
+    // start a session if not already started
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    // store the role id 
+    $role = $_SESSION['role_id'];
+    if ($role == 1)
+    {
+        // redirect users if they are not meant to be
+        header("../view/welcome_view.php");
+    } 
+    else if ($role == 3)
+    {
+        header("../view/dashboard_view.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,21 +40,17 @@
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/dashboard_view.php"><button class="header_btn"> Home </button></a>
             <a href="logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>
         <!-- User details -->
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
-
                 <?php
-                    displayProfile();
+                    displayEmployeeProfile();
                 ?>
-            </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
@@ -46,11 +59,40 @@
 
     <aside class="menu_container">
         <div class="container">
-            <img src="../images/image.png" alt="" width="120px" height="120px">
-            <p>Ad Space</p>
-            <a href="#">Learn More</a> 
+            <img src="../images/candle ad.jpeg" alt="ads image" width="120px" height="120px">
+            <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a>  
         </div>
         <hr>
+        <div class="menu_content">
+            <div class="menu_header">
+                <h4>Menu</h4>
+                <span class="material-symbols-outlined">menu</span>
+            </div>
+            <ul>
+            <?php
+                if ($role == 3)
+                {
+                    echo "<li> 
+                        <a href='../view/partnereviews_view.php'> <span class='material-symbols-outlined'>rate_review</span> New Review </a> 
+                        </li>
+                        <li>
+                            <a href='../view/pastreviews_view.php'> <span class='material-symbols-outlined'>history</span> Past Reviews </a> 
+                        </li>";
+                }
+                else if ($role == 4)
+                {
+                    echo
+                   " <li>
+                        <a href='../view/conversations_view.php'> <span class='material-symbols-outlined'>chat</span> Conversations </a> 
+                    </li>
+                    <li>
+                        <a href='../view/sourced_items.php'> <span class='material-symbols-outlined'>inventory</span> List Items </a> 
+                    </li>
+                    ";
+                }
+            ?>
+            </ul>
+        </div>
     </aside>
 
     <main>

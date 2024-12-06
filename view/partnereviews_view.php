@@ -1,5 +1,20 @@
 <?php
+    include_once("../settings/core.php");
+    check_login();
     include_once("../functions/display_employeeprofile.php");
+
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $role = $_SESSION['role_id'];
+    if ($role == 2)
+    {
+        header("../view/login_view.php");
+    }  else if ($role == 3)
+    {
+        header("../view/dashboard_view.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +36,15 @@
         <div class="btn_container">
             <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
             <a href="../view/dashboard_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/logout.php">
+                <button class="header_btn"> Logout </button>
+            </a>
         </div>
         <div class="user_container">
                 <?php
                     displayEmployeeProfile();
                 ?>
-            <a href="../view/employe_profile_view.php" style="text-decoration: none;">
+            <a href="../view/employee_profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>
         </div>
@@ -45,15 +63,28 @@
                 <span class="material-symbols-outlined">menu</span>
             </div>
             <ul>
-                <li> 
-                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">rate_review</span> New Review </a> 
-                </li>
-                <li>
-                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">history</span> Past Reviews </a> 
-                </li>
-                <li>
-                    <a href="../view/conversations_view.php"> <span class="material-symbols-outlined">chat</span> Conversations </a> 
-                </li>
+                <?php
+                if ($role == 3)
+                {
+                    echo "<li> 
+                        <a href='../view/partnereviews_view.php'> <span class='material-symbols-outlined'>rate_review</span> New Review </a> 
+                        </li>
+                        <li>
+                            <a href='../view/pastreviews_view.php'> <span class='material-symbols-outlined'>history</span> Past Reviews </a> 
+                        </li>";
+                }
+                else if ($role == 4)
+                {
+                    echo
+                   " <li>
+                        <a href='../view/conversations_view.php'> <span class='material-symbols-outlined'>chat</span> Conversations </a> 
+                    </li>
+                    <li>
+                        <a href='../view/sourced_items.php'> <span class='material-symbols-outlined'>inventory</span> List Items </a> 
+                    </li>
+                    ";
+                }
+                ?>
             </ul>
         </div>
     </aside>

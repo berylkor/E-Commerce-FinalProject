@@ -40,6 +40,17 @@ function display_individualreviews($id)
         }
         echo
                     "</div>
+                        <div class='image_container'>";
+        if (!empty($review['reviewer_image']))
+        {
+                echo "<img src='".$review['reviewer_image']."' alt='Expert Profile' width='30px'>";                   
+        }
+        else
+        {
+            echo "<span class='material-symbols-outlined' style='font-size: 30px; color: #333;'>account_circle</span>";
+        }
+        echo
+                    "</div>
                         <div class='user_details'>
                             <h6>".$review['reviewer_name']."</h6>
                             <p>".$daysbetween." days ago</p>

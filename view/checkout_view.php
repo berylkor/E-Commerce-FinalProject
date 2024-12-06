@@ -1,4 +1,6 @@
 <?php
+include_once("../settings/core.php");
+check_login();
 include_once("../functions/display_profile.php");
 include_once("../functions/display_ordersummary.php");
 if (session_status() === PHP_SESSION_NONE) {
@@ -62,11 +64,14 @@ if (isset($_GET['key']))
             <ul>
                 <li> 
                     <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">chat</span> Chat </a> 
+                    <a href="../view/personalshopping.php"> <span class="material-symbols-outlined">chat</span> Chat </a> 
                 </li>
                 <li>
                     <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">list_alt</span> List </a> 
+                    <a href="../view/curatedlist_view.php"> <span class="material-symbols-outlined">list_alt</span> List </a> 
                 </li>
                 <li>
+                    <a href="../view/cart_view.php"> <span class="material-symbols-outlined">shopping_cart</span> cart </a> 
                     <a href="../view/cart_view.php"> <span class="material-symbols-outlined">shopping_cart</span> cart </a> 
                 </li>
             </ul>

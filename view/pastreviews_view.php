@@ -1,6 +1,20 @@
 <?php
+    include_once("../settings/core.php");
+    check_login();
     include_once("../functions/display_employeeprofile.php");
     include_once("../functions/display_ureviews.php");
+    // collect the user's role id
+    $role = $_SESSION['role_id'];
+    if ($role == 2)
+    {
+        // redirect to the login page
+        header("../view/login_view.php");
+    }  
+    else if ($role == 3)
+    {
+        // redirect to the dashboard page
+        header("../view/dashboard_view.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -43,17 +57,34 @@
             <a href="../view/candle.html" target="_blank" rel="noopener noreferrer">Learn More</a> 
         </div>
         <hr>
-        <ul>
-                <li> 
-                    <a href="../view/partnereviews_view.php"> <span class="material-symbols-outlined">rate_review</span> New Review </a> 
-                </li>
-                <li>
-                    <a href="../view/pastreviews_view.php"> <span class="material-symbols-outlined">history</span> Past Reviews </a> 
-                </li>
-                <li>
-                    <a href="../view/conversations_view.php"> <span class="material-symbols-outlined">chat</span> Conversations </a> 
-                </li>
-        </ul>
+        <div class="menu_content">
+            <div class="menu_header">
+                <h4>Menu</h4>
+                <span class="material-symbols-outlined">menu</span>
+            </div>
+            <ul>
+                <?php
+                    if ($role == 3)
+                    {
+                        echo "<li> 
+                            <a href='../view/partnereviews_view.php'> <span class='material-symbols-outlined'>rate_review</span> New Review </a> 
+                            </li>
+                            <li>
+                                <a href='../view/pastreviews_view.php'> <span class='material-symbols-outlined'>history</span> Past Reviews </a> 
+                            </li>";
+                    }
+                    else if ($role == 4)
+                    {
+                        echo"<li>
+                                <a href='../view/conversations_view.php'> <span class='material-symbols-outlined'>chat</span> Conversations </a> 
+                            </li>
+                            <li>
+                                <a href='../view/sourced_items.php'> <span class='material-symbols-outlined'>inventory</span> List Items </a> 
+                            </li>";
+                    }
+                ?>
+            </ul>
+        </div>
     </aside>
 
     <!-- Page main -->

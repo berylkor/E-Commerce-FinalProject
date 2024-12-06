@@ -10,7 +10,6 @@
         $itemname = $_POST["itemname"];
         $price = $_POST["itemprice"];
         $customer = $_POST["customer"];
-        // $itemimage = $_POST["image"];
         $shopper = $_SESSION["user_id"];
 
         if(isset($_FILES['itemimage']) && $_FILES['itemimage']['error'] != UPLOAD_ERR_NO_FILE)
@@ -24,14 +23,15 @@
     
                 if (in_array($fileextenstion, $extensions) && $filesize < 2000000)
                 {
-                    $directory = "../images/";
+
+                    $directory = "../../uploads/";
                     $filepath = $directory.basename($filename);
     
                     if (move_uploaded_file($filetmppath, $filepath))
                     {
                         if(add_item_ctr($itemname, $price, $customer, $shopper, $filepath))
                         {
-                            header("Location:../view/items_display.php");
+                            header("Location:../view/dashboard_view.php");
                             exit();
                         }
                         else

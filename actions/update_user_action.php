@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $username = $_POST['username'];
     $useremail = $_POST['useremail'];
     $usernumber = $_POST['usernumber'];
-    $userpass = $_POST['userpass'];
 
     if(isset($_FILES['image']) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE)
     {
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             if (in_array($fileextenstion, $extensions) && $filesize < 2000000)
             {
-                $directory = "../images/";
+                $directory = "../../uploads/";
                 $filepath = $directory.basename($filename);
 
                 if (move_uploaded_file($filetmppath, $filepath))

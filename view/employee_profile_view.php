@@ -1,4 +1,7 @@
 <?php
+    include_once("../settings/core.php");
+    check_login();
+    include_once("../functions/display_employeedetails.php");
     include_once("../functions/display_employeeprofile.php");
     include_once("../functions/display_privileges.php");
     if (session_status() === PHP_SESSION_NONE) {
@@ -38,7 +41,7 @@
                         displayEmployeeProfile();
                     ?>
                 
-                <a href="../view/profile_view.php" style="text-decoration: none;">
+                <a href="../view/employee_profile_view.php" style="text-decoration: none;">
                     <span class="material-symbols-outlined">keyboard_arrow_down</span>
                 </a>
             </div>
@@ -57,7 +60,7 @@
     <main>
         <!-- Display the employee's details and allow them to make changes -->
             <?php
-                displayCustomerdetails();
+                displayEmployeedetails();
             ?>
     </main>
 

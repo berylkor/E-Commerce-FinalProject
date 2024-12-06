@@ -1,4 +1,6 @@
 <?php
+    include_once("../settings/core.php");
+    check_login();
     include_once("../functions/display_profile.php");
     include_once("../functions/display_subscription.php");
 
@@ -28,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <h2 id="nichelogo">NicheNest</h2>
         <!-- Buttons to other pages -->
         <div class="btn_container">
-            <a href="about_view.php"><button class="header_btn"> About Us</button></a>
-            <a href="welcome_view.php"><button class="header_btn"> Home </button></a>
-            <a href="productreviews.html">    <button class="header_btn"> Rankings </button></a>
-            <a href="">    <button class="header_btn"> Shopping </button></a>
-            <a href="logout.php">
+        <a href="../view/about_view.php"><button class="header_btn"> About Us</button></a>
+            <a href="../view/welcome_view.php"><button class="header_btn"> Home </button></a>
+            <a href="../view/productreviews.php"> <button class="header_btn"> Rankings </button></a>
+            <a href="../view/personalshopping.php"> <button class="header_btn"> Shopping </button></a>
+            <a href="../view/logout.php">
                 <button class="header_btn"> Logout </button>
             </a>
         </div>

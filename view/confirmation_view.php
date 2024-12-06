@@ -1,10 +1,21 @@
 <?php
+include_once("../settings/core.php");
+check_login();
 include_once("../functions/display_profile.php");
 if (isset($_GET['key']) && isset($_GET['value']))
 {
     $orderid = $_GET['key'];
     $amount = $_GET['value'];
 }
+
+// collect the user's role id
+$role = $_SESSION['role_id'];
+if ($role == 3 | $role == 4)
+{
+    // redirect to the partner login page
+    header("../view/partner_login_view.php");
+}  
+
 ?>
 
 
@@ -34,12 +45,9 @@ if (isset($_GET['key']) && isset($_GET['value']))
         </div>
         <!-- User details -->
         <div class="user_container">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="profile_details">
                 <?php
                     displayProfile();
                 ?>
-            </div>
             <a href="profile_view.php" style="text-decoration: none;">
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
             </a>

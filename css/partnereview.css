@@ -145,6 +145,7 @@ main
     height: 100%;
     padding: var(--padding-large);
     overflow-y: auto;
+    overflow-y: auto;
 }
 
 main > h3

@@ -146,7 +146,6 @@ class db_connection
 
 
 	function db_insert_id()
-	
 	{
 		if ($this->db !== null){
 			return mysqli_insert_id($this->db);

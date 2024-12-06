@@ -36,5 +36,18 @@ function update_user_ctr($name, $email, $contact, $id)
 	$update = new user_class();
 	return $update->update_user($name, $email, $contact, $id);
 }
+// function to function to update the details of the customer with image in the users table
+function update_user_wimgctr($image, $name, $email, $contact, $id)
+{
+	$update = new user_class();
+	return $update->update_user_wimg($image, $name, $email, $contact, $id);
+}
+
+// function to function to update the details of the customer without image in the users table
+function update_user_ctr($name, $email, $contact, $id)
+{
+	$update = new user_class();
+	return $update->update_user($name, $email, $contact, $id);
+}
 
 ?>
